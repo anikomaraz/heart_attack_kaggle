@@ -2,14 +2,44 @@
 # Details: https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview
 
 ###### IMPORTS ######
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 import pandas as pd
+import ydata_profiling
+import statistics
+
 
 ###### GET DATA ######
-pd.read_csv('data/test.csv')
-
+df_heart_risk_train = pd.read_csv('data/train.csv')
+df_heart_risk_test = pd.read_csv('data/test.csv')
 
 ###### EXPLORE DATA ######
+# df_heart_risk_train.profile_report()
+print(df_heart_risk_test.columns)
+columns = ['Patient ID', 'Age', 'Sex', 'Cholesterol', 'Blood Pressure',
+       'Heart Rate', 'Diabetes', 'Family History', 'Smoking', 'Obesity',
+       'Alcohol Consumption', 'Exercise Hours Per Week', 'Diet',
+       'Previous Heart Problems', 'Medication Use', 'Stress Level',
+       'Sedentary Hours Per Day', 'Income', 'BMI', 'Triglycerides',
+       'Physical Activity Days Per Week', 'Sleep Hours Per Day', 'Country',
+       'Continent', 'Hemisphere']
+print(df_heart_risk_train[['Diabetes']].describe()['mean'])
+columns_mean = df_heart_risk_train['Age', 'Cholesterol']
+
+mean(df_heart_risk_train['Age'])
+
+# for column in columns_mean:
+#        mean = statistics.mean(columns_mean[[column]])
+#        std = statistics.stdev(columns_mean[[column]])
+#        f"For {column} the mean is {mean} and the std is {std}."
+
+
+# print(df_heart_risk_test.describe())
+# train data contains 7010 entries and 26 columns (25+1)
+# there is no missing data!
+# mean age is 54 years, 18-90 years, 70% men. The sample has high cholesterol levels (mean = 260, above 240 is considered high).
+# Heart rate is around 75 (normal: 60-100).
+
+
 # .shape, .columns, .dtypes
 # .info(), .describe(), nunique(), .isna().sum()
 
