@@ -1,0 +1,19 @@
+# data science
+numpy
+pandas
+
+sklearn
+
+# API
+pytrends
+requests
+
+# backend
+fastapi
+uvicorn
+
+
+# read image on frontend
+Pillow # for PIL
+
+
