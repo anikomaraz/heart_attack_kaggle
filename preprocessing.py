@@ -1,26 +1,12 @@
-################# IMPORTS #################
+# preprocessing.py
 
 import numpy as np
 import pandas as pd
 
-from sklearn.pipeline import make_pipeline, Pipeline
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import (
-    StandardScaler,
-    MinMaxScaler,
-    RobustScaler,
-    OneHotEncoder,
-)
+from sklearn.pipeline import Pipeline
 
-from sklearn.metrics import accuracy_score, classification_report
-
-from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
-
-# Import custom functions for feature splitting
-from utils import split_blood_pressure, split_cholesterol_sample
-
-
-################# DATA TRANSFORMATIONS #################
 
 def load_data(file_path):
     """
@@ -28,42 +14,51 @@ def load_data(file_path):
 
     Returns a pandas.DataFrame: Loaded DataFrame.
     """
+    print(f"Loading data from: {file_path}")
     return pd.read_csv(file_path)
 
 
-def create_new_features(df):
-    """
-    Applies custom feature splitting functions to create new features.
+def split_blood_pressure(df):
+    df[["Systolic", "Diastolic"]] = df["Blood Pressure"].str.split("/", expand=True)
+    df["Systolic"] = pd.to_numeric(df["Systolic"])
+    df["Diastolic"] = pd.to_numeric(df["Diastolic"])
+    df.drop(columns=["Blood Pressure"], inplace=True)
 
-    Returns a pandas.DataFrame with new features added.
-    """
+def split_cholesterol_sample(df):
+    cholesterol_sample_mean = df["Cholesterol"].mean()
+    df["Cholesterol_sample_split"] = np.where(df["Cholesterol"] > cholesterol_sample_mean, 1, 0)
+
+
+def create_new_features(df):
     df_copy = df.copy()
     split_blood_pressure(df_copy)
     split_cholesterol_sample(df_copy)
+    # Add more feature engineering steps as needed
+
+    print(f"Features after creating new features: {df_copy.columns}")
     return df_copy
 
 
 def select_features(df, continuous_vars, categorical_vars):
-    """
-    Selects specified features from the DataFrame.
+    selected_features = continuous_vars + categorical_vars
+    if df is None:
+        raise ValueError("Input dataframe 'df' is None.")
 
-    Parameters:
-    df (pandas.DataFrame): Input DataFrame.
-    continuous_vars (list): List of continuous variable names.
-    categorical_vars (list): List of categorical variable names.
+    if len(selected_features) == 0:
+        raise ValueError("No features selected. Check 'continuous_vars' and 'categorical_vars'.")
 
-    Returns:
-    pandas.DataFrame: DataFrame containing selected features.
-    """
-    return df[continuous_vars + categorical_vars]
+    selected_features = [col for col in selected_features if col in df.columns]
+    return df[selected_features]
 
-
-def preprocess_data(X, num_transformer, cat_transformer):
+def preprocess_data(X_train, X_test, continuous_vars, categorical_vars):
     """
     Applies preprocessing steps to the data using ColumnTransformer.
 
-    Returns a numpy.ndarray: Transformed data array.
+    Returns preprocessed training and test DataFrames.
     """
+    num_transformer = MinMaxScaler()
+    cat_transformer = OneHotEncoder(drop="first")
+
     preproc_basic = ColumnTransformer(
         transformers=[
             ("num", num_transformer, continuous_vars),
@@ -72,5 +67,16 @@ def preprocess_data(X, num_transformer, cat_transformer):
         remainder="passthrough",
     )
 
-    return preproc_basic.fit_transform(X)
+    print(f"Features before preprocessing: {X_train.columns}")
 
+    # Fit and transform on training data
+    X_train_transformed = preproc_basic.fit_transform(X_train)
+
+    # Transform test data
+    X_test_transformed = preproc_basic.transform(X_test)
+
+    # Get the feature names after transformation
+    transformed_columns = continuous_vars + cat_transformer.get_feature_names_out(categorical_vars).tolist()
+    print(f"Features after preprocessing: {transformed_columns}")
+
+    return X_train_transformed, X_test_transformed, transformed_columns
