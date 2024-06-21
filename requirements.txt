@@ -2,7 +2,9 @@
 numpy
 pandas
 
-sklearn
+# ml
+scikit-learn
+joblib
 
 # API
 pytrends
