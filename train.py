@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
-import utils
+from utils import load_data, create_new_features, select_features, define_preprocessing_pipeline, train_model, evaluate_model, preprocess, predict
+
 import config
 
 
@@ -23,12 +24,12 @@ if __name__ == "__main__":
     # Create new features
     print("Creating new features...")
     df = create_new_features(df_raw_train)
-    print(f"Features after creating new features: {df.columns}")
+
 
     # Select features
     print("Selecting features...")
     X_selected = select_features(df, continuous_vars, categorical_vars)
-    print(f"Selected features: {X_selected.columns}")
+
 
     # Train-Test split
     print("Performing train-test split...")
@@ -49,9 +50,9 @@ if __name__ == "__main__":
     print(f"Loading test data from: {config.TEST_DATA_PATH}")
     df_input = load_data(config.TEST_DATA_PATH)
 
-    # Preprocess test data
-    X_preprocessed = preprocess(df_input, continuous_vars, categorical_vars, preproc_basic)
+    df_input = create_new_features(df_input)
+    df_input = select_features(df_input, continuous_vars, categorical_vars)
 
     # Predict
-    predictions = predict(model, X_preprocessed)
+    predictions = model.predict(df_input)
     print(predictions)

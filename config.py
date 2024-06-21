@@ -15,8 +15,8 @@ CONTINUOUS_VARS = [
         "Triglycerides",
         "Physical Activity Days Per Week",
         "Sleep Hours Per Day",
-        "Systolic",
-        "Diastolic",
+        "Systolic", # created VAR
+        "Diastolic", # created VAR
     ]
 
 CATEGORICAL_VARS = [
@@ -26,7 +26,7 @@ CATEGORICAL_VARS = [
         "Alcohol Consumption",
         "Previous Heart Problems",
         "Medication Use",
-        "Cholesterol_sample_split",
+        "Cholesterol_sample_split", # created VAR
         "Sex",
         "Continent",
         "Diet",
