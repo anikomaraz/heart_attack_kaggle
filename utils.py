@@ -1,6 +1,12 @@
 import numpy as np
 import pandas as pd
 
+from sklearn.svm import SVC
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
+from sklearn.model_selection import cross_val_score
+
 def load_data(file_path):
     """
     Loads data from CSV file.
