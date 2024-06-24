@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import pickle
+import pandas as pd
 
 # preprocessing
 from utils import create_new_features, select_features
@@ -12,7 +13,7 @@ with open(model_path, 'rb') as f:
 
 
 # get data as user input
-data_input_hardcoded = {
+data_input_dict = {
     "Patient ID": "RDG0550",
     "Age": 33,
     "Sex": "Male",
@@ -41,6 +42,9 @@ data_input_hardcoded = {
     "Heart Attack Risk": 1
 }
 
+df_data_input = pd.DataFrame(data_input_dict, index = [0])
+
+
 # Define a root `/` endpoint
 app = FastAPI()
 
@@ -49,23 +53,19 @@ app = FastAPI()
 # http://127.0.0.1:8000/predict?stock='AAPL'
 # https://stockprediction.streamlit.app/predict?stock=AAPL
 @app.get('/predict')
-def predict(heart_risk):
+def predict():
     # GET data from API
 
     # GET hardcoded data for now
-    df_input = data_input_hardcoded
+    df_input = df_data_input
     df_input = create_new_features(df_input)
     df_input = select_features(df_input, config.CONTINUOUS_VARS, config.CATEGORICAL_VARS)
 
     # Predict
-    prediction = model.predict(df_input)
+    prediction = model.predict(df_input)[0]
 
+    prediction_friendly = ("high risk" if prediction == 1 else "low risk")
 
-    return {
-        "input_data": data_input_hardcoded,
-        "prediction": prediction
-
-
-    }
+    return {'my_prediction' : prediction_friendly}
 
 
