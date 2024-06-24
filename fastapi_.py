@@ -1,10 +1,10 @@
 from fastapi import FastAPI
-import requests
 import pickle
 
-# features
+# preprocessing
 from utils import create_new_features, select_features
 import config
+
 # Load the model
 model_path = config.MODEL_PATH
 with open(model_path, 'rb') as f:
