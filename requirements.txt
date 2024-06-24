@@ -7,12 +7,15 @@ scikit-learn
 joblib
 
 # API
-pytrends
 requests
 
 # backend
 fastapi
 uvicorn
+
+# read image on frontend
+Pillow
+
 
 
 # read image on frontend
