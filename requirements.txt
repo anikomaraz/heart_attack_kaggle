@@ -14,11 +14,8 @@ fastapi
 uvicorn
 
 # read image on frontend
+streamlit
 Pillow
 
-
-
-# read image on frontend
-Pillow # for PIL
 
 
