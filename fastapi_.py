@@ -64,7 +64,7 @@ def predict():
     # Predict
     prediction = model.predict(df_input)[0]
 
-    prediction_friendly = ("high risk" if prediction == 1 else "low risk")
+    prediction_friendly = ("HIGH RISK" if prediction == 1 else "LOW RISK")
 
     return {'my_prediction' : prediction_friendly}
 
