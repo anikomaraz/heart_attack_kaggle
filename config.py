@@ -2,6 +2,7 @@
 # Paths to the datasets
 TRAIN_DATA_PATH = "data/train.csv"
 TEST_DATA_PATH = "data/test.csv"
+MODEL_PATH = "models/model_final_svm.pkl"
 
 # to select variables
 CONTINUOUS_VARS = [

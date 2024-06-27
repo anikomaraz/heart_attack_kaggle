@@ -2,4 +2,8 @@ data/
 .idea/
 __pycache__/
 .ipynb_checkpoints/
-
+bin/
+include/
+lib/
+lib64/
+venv/

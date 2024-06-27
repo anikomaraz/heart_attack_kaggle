@@ -1,10 +1,12 @@
 import numpy as np
 import pandas as pd
+import pickle
 
 from sklearn.model_selection import train_test_split
 from utils import load_data, create_new_features, select_features, define_preprocessing_pipeline, train_model, evaluate_model, preprocess, predict
 
 import config
+
 
 
 
@@ -40,6 +42,12 @@ if __name__ == "__main__":
     print("Training model...")
     preproc_basic = define_preprocessing_pipeline(continuous_vars, categorical_vars)
     model = train_model(X_train, y_train, preproc_basic)
+
+    # Save the model
+    model_path = config.MODEL_PATH
+    print(f"Saving model to: {model_path}")
+    with open(model_path, 'wb') as f:
+        pickle.dump(model, f)
 
     # Evaluate model
     print("Evaluating model...")
