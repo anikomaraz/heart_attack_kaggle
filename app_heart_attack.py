@@ -1,5 +1,4 @@
 import streamlit as st
-
 import requests
 
 
@@ -22,19 +21,15 @@ st.markdown("""
 
 
 st.markdown("""
-<br>
-This is a unique opportunity to fake-accurately fake-predict your heart risk based on fake data provided by Kaggle.
-<br>
-<br>
+This is a unique opportunity to fake-predict your heart risk based on fake data provided by Kaggle.  
+All you need to do is fake-fill-out the questionnaire below. I save you some work by providing default values which you are welcome to modify.  
+
+[Kaggle competition](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview)  
+[GitHub repo](https://github.com/anikomaraz/heart_attack_kaggle)
 """, unsafe_allow_html=True)
 
-'''
-[Kaggle competition](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview) ***
-[GitHub repo](https://github.com/anikomaraz/heart_attack_kaggle)
-'''
 
 st.markdown("""
-<br>
 <br>
 <br>
 
@@ -142,42 +137,37 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-
-
 # Button to trigger prediction or processing
 if st.button('Predict'):
-    # Here you would send these values to your FastAPI backend
-    # Example HTTP request:
-    response = requests.post('http://localhost:8000/predict', json=data_input)
+    # response = requests.post('http://localhost:8000/predict', json=data_input)
+    # url = "http://127.0.0.1:8000/predict"
+    docker_url = 'https://gcr.io/heart-attack-427707/heart_attack_app/predict'
 
-# get prediction from UI
-# for local running use: 
-    url = "http://127.0.0.1:8000/predict"
+    try:
+        response = requests.post(docker_url, json=data_input)
 
-# url = 'https://gcloud-5cp25n2jkq-ew.a.run.app/predict'
+        if response.status_code == 200:
+            prediction = response.json()['prediction']
 
-    params = {'data_input' : data_input}
-    response = requests.get(url, params = params)
-    heart_attack_prediction = response.json()
+            # Determine the color based on the prediction
+            color = "green" if prediction == "LOW RISK" else "red" if prediction == "HIGH RISK" else "black"
 
-    risk = heart_attack_prediction["my_prediction"]
-
-    # Determine the color based on the value of risk
-    color = "green" if risk == "LOW RISK" else "red" if risk == "HIGH RISK" else "black"
-
-    # Create the style and dynamically insert the value of risk
-    st.markdown(f"""
-        <style>
-        .big-font {{
-            font-size: 30px !important;
-            color: {color};
-            text-align: center;
-            font-weight: bold;
-        }}
-        </style>
-        <p class="big-font">{risk}</p>
-        """, unsafe_allow_html=True)
-
+            # Display prediction
+            st.markdown(f"""
+                    <style>
+                    .big-font {{
+                        font-size: 30px !important;
+                        color: {color};
+                        text-align: center;
+                        font-weight: bold;
+                    }}
+                    </style>
+                    <p class="big-font">{prediction}</p>
+                    """, unsafe_allow_html=True)
+        else:
+            st.error('Failed to get prediction.')
+    except requests.exceptions.RequestException as e:
+        st.error(f'Error: {e}')
 
 st.markdown("""
 <br>
@@ -185,16 +175,9 @@ st.markdown("""
 <br>
 """, unsafe_allow_html=True)
 
-# image = requests.post("http://localhost:8079/plot", json = {'stock_prediction': stock_prediction})
-# image = requests.post("https://stock-prediction-r-62x2mlrora-ew.a.run.app/plot",
-#                      json = {'stock_prediction': stock_prediction})
-
-
-# st.image(Image.open(BytesIO(image.content)), output_format='png')
-
 st.markdown('''
     <sup>*</sup>Although this model is far from reflecting reality, it should generally point you to the right direction. 
-    Want to get high risk? Then live an unhealthy life!
+    Want to get high risk? Then live an unhealthy life! 
     <br> <br>
     **Find me, blame me:** aniko.maraz[at]gmail.com  
 ''', unsafe_allow_html=True)

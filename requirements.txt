@@ -8,6 +8,7 @@ joblib
 
 # API
 requests
+streamlit
 
 # backend
 fastapi
