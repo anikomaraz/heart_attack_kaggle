@@ -96,6 +96,7 @@ country = st.selectbox('Select a Country', countries)
 continent = st.selectbox('Select a Continent', continents)
 hemisphere = st.selectbox('Select a Hemisphere', hemispheres)
 
+# Mapping categorical inputs to numeric values
 data_input = {
     'Age': age,
     'Heart Rate': heart_rate,
@@ -108,19 +109,18 @@ data_input = {
     'Physical Activity Days Per Week': physical_activity_days_per_week,
     'Sleep Hours Per Day': sleep_hours_per_day,
     'Blood Pressure': blood_pressure,
-    'Diabetes': diabetes,
-    'Family History': family_history,
-    'Obesity': obesity,
-    'Alcohol Consumption': alcohol_consumption,
-    'Previous Heart Problems': previous_heart_problems,
-    'Medication Use': medication_use,
-    'Cholesterol': cholesterol,  
+    'Diabetes': 1 if diabetes == 'Yes' else 0,
+    'Family History': 1 if family_history == 'Yes' else 0,
+    'Obesity': 1 if obesity == 'Yes' else 0,
+    'Alcohol Consumption': 1 if alcohol_consumption == 'Yes' else 0,
+    'Previous Heart Problems': 1 if previous_heart_problems == 'Yes' else 0,
+    'Medication Use': 1 if medication_use == 'Yes' else 0,
+    'Cholesterol': cholesterol,
     'Sex': sex,
     'Continent': continent,
     'Diet': diet,
     'Hemisphere': hemisphere,
 }
-
 
 st.markdown("""
 <br>
