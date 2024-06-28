@@ -135,13 +135,11 @@ if st.button('Predict'):
     docker_url = 'https://heart-attack-app-33s7xrm4hq-od.a.run.app/predict'
 
     try:
-        st.write("Sending data to backend...")
         response = requests.post(docker_url, json=data_input)
 
-        st.write(f"Response status code: {response.status_code}")
         if response.status_code == 200:
             heart_attack_prediction = response.json()
-            st.write(f"Response JSON: {heart_attack_prediction}")
+            # st.write(f"Response JSON: {heart_attack_prediction}")
             prediction = heart_attack_prediction.get('my_prediction', 'No prediction returned')
 
             # Determine the color based on the prediction
@@ -161,7 +159,7 @@ if st.button('Predict'):
                     """, unsafe_allow_html=True)
         else:
             st.error('Failed to get prediction.')
-            st.write(f"Error details: {response.text}")
+            #st.write(f"Error details: {response.text}")
     except requests.exceptions.RequestException as e:
         st.error(f'Error: {e}')
 
