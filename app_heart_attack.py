@@ -1,7 +1,6 @@
 import streamlit as st
 import requests
 
-
 st.markdown("""
     <style>
     .centered-text {
@@ -19,7 +18,6 @@ st.markdown("""
     </div>
     """, unsafe_allow_html=True)
 
-
 st.markdown("""
 This is a unique opportunity to fake-predict your heart risk based on fake data provided by Kaggle.  
 All you need to do is fake-fill-out the questionnaire below. I save you some work by providing default values which you are welcome to modify.  
@@ -28,12 +26,11 @@ All you need to do is fake-fill-out the questionnaire below. I save you some wor
 [GitHub repo](https://github.com/anikomaraz/heart_attack_kaggle)
 """, unsafe_allow_html=True)
 
-
 st.markdown("""
 <br>
 <br>
-
 """, unsafe_allow_html=True)
+
 # Define default values for features
 defaults = {
     "Age": 50,
@@ -71,9 +68,6 @@ countries = [
     "Japan", "New Zealand", "Brazil", "India", "South Korea", "Australia"
 ]
 
-
-
-
 # Widgets for user inputs with default values
 age = st.slider('Age', min_value=18, max_value=100, value=defaults['Age'])
 sex = st.selectbox('Sex', ['Male', 'Female'], index=0 if defaults['Sex'] == 'Male' else 1)
@@ -103,31 +97,32 @@ continent = st.selectbox('Select a Continent', continents)
 hemisphere = st.selectbox('Select a Hemisphere', hemispheres)
 
 data_input = {
-        'age': age,
-        'sex': sex,
-        'cholesterol': cholesterol,
-        'blood_pressure': blood_pressure,
-        'heart_rate': heart_rate,
-        'diabetes': diabetes,
-        'family_history': family_history,
-        'smoking': smoking,
-        'obesity': obesity,
-        'alcohol_consumption': alcohol_consumption,
-        'exercise_hours_per_week': exercise_hours_per_week,
-        'diet': diet,
-        'previous_heart_problems': previous_heart_problems,
-        'medication_use': medication_use,
-        'stress_level': stress_level,
-        'sedentary_hours_per_day': sedentary_hours_per_day,
-        'income': income,
-        'bmi': bmi,
-        'triglycerides': triglycerides,
-        'physical_activity_days_per_week': physical_activity_days_per_week,
-        'sleep_hours_per_day': sleep_hours_per_day,
-        'country': country,
-        'continent': continent,
-        'hemisphere': hemisphere
-    }
+    'age': age,
+    'sex': sex,
+    'cholesterol': cholesterol,
+    'blood_pressure': blood_pressure,
+    'heart_rate': heart_rate,
+    'diabetes': diabetes,
+    'family_history': family_history,
+    'smoking': smoking,
+    'obesity': obesity,
+    'alcohol_consumption': alcohol_consumption,
+    'exercise_hours_per_week': exercise_hours_per_week,
+    'diet': diet,
+    'previous_heart_problems': previous_heart_problems,
+    'medication_use': medication_use,
+    'stress_level': stress_level,
+    'sedentary_hours_per_day': sedentary_hours_per_day,
+    'income': income,
+    'bmi': bmi,
+    'triglycerides': triglycerides,
+    'physical_activity_days_per_week': physical_activity_days_per_week,
+    'sleep_hours_per_day': sleep_hours_per_day,
+    'country': country,
+    'continent': continent,
+    'hemisphere': hemisphere
+}
+
 st.markdown("""
 <br>
 <br>
@@ -136,18 +131,19 @@ st.markdown("""
 ##### You have: 
 """, unsafe_allow_html=True)
 
-
 # Button to trigger prediction or processing
 if st.button('Predict'):
-    # url = "http://127.0.0.1:8000/predict"
     docker_url = 'https://heart-attack-app-33s7xrm4hq-od.a.run.app/predict'
 
     try:
+        st.write("Sending data to backend...")
         response = requests.post(docker_url, json=data_input)
 
+        st.write(f"Response status code: {response.status_code}")
         if response.status_code == 200:
             heart_attack_prediction = response.json()
-            prediction = heart_attack_prediction['my_prediction']
+            st.write(f"Response JSON: {heart_attack_prediction}")
+            prediction = heart_attack_prediction.get('my_prediction', 'No prediction returned')
 
             # Determine the color based on the prediction
             color = "green" if prediction == "LOW RISK" else "red" if prediction == "HIGH RISK" else "black"
@@ -166,6 +162,7 @@ if st.button('Predict'):
                     """, unsafe_allow_html=True)
         else:
             st.error('Failed to get prediction.')
+            st.write(f"Error details: {response.text}")
     except requests.exceptions.RequestException as e:
         st.error(f'Error: {e}')
 
