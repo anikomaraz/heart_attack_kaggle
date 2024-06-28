@@ -139,15 +139,15 @@ st.markdown("""
 
 # Button to trigger prediction or processing
 if st.button('Predict'):
-    # response = requests.post('http://localhost:8000/predict', json=data_input)
     # url = "http://127.0.0.1:8000/predict"
-    docker_url = 'https://gcr.io/heart-attack-427707/heart_attack_app/predict'
+    docker_url = 'https://heart-attack-app-33s7xrm4hq-od.a.run.app/predict'
 
     try:
         response = requests.post(docker_url, json=data_input)
 
         if response.status_code == 200:
-            prediction = response.json()['prediction']
+            heart_attack_prediction = response.json()
+            prediction = heart_attack_prediction['my_prediction']
 
             # Determine the color based on the prediction
             color = "green" if prediction == "LOW RISK" else "red" if prediction == "HIGH RISK" else "black"
