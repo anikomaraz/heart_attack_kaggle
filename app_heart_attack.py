@@ -97,31 +97,30 @@ continent = st.selectbox('Select a Continent', continents)
 hemisphere = st.selectbox('Select a Hemisphere', hemispheres)
 
 data_input = {
-    'age': age,
-    'sex': sex,
-    'cholesterol': cholesterol,
-    'blood_pressure': blood_pressure,
-    'heart_rate': heart_rate,
-    'diabetes': diabetes,
-    'family_history': family_history,
-    'smoking': smoking,
-    'obesity': obesity,
-    'alcohol_consumption': alcohol_consumption,
-    'exercise_hours_per_week': exercise_hours_per_week,
-    'diet': diet,
-    'previous_heart_problems': previous_heart_problems,
-    'medication_use': medication_use,
-    'stress_level': stress_level,
-    'sedentary_hours_per_day': sedentary_hours_per_day,
-    'income': income,
-    'bmi': bmi,
-    'triglycerides': triglycerides,
-    'physical_activity_days_per_week': physical_activity_days_per_week,
-    'sleep_hours_per_day': sleep_hours_per_day,
-    'country': country,
-    'continent': continent,
-    'hemisphere': hemisphere
+    'Age': age,
+    'Heart Rate': heart_rate,
+    'Exercise Hours Per Week': exercise_hours_per_week,
+    'Stress Level': stress_level,
+    'Sedentary Hours Per Day': sedentary_hours_per_day,
+    'Income': income,
+    'BMI': bmi,
+    'Triglycerides': triglycerides,
+    'Physical Activity Days Per Week': physical_activity_days_per_week,
+    'Sleep Hours Per Day': sleep_hours_per_day,
+    'Blood Pressure': blood_pressure,
+    'Diabetes': diabetes,
+    'Family History': family_history,
+    'Obesity': obesity,
+    'Alcohol Consumption': alcohol_consumption,
+    'Previous Heart Problems': previous_heart_problems,
+    'Medication Use': medication_use,
+    'Cholesterol_sample_split': cholesterol,  # Assuming this is the correct mapping
+    'Sex': sex,
+    'Continent': continent,
+    'Diet': diet,
+    'Hemisphere': hemisphere,
 }
+
 
 st.markdown("""
 <br>
