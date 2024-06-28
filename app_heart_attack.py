@@ -85,7 +85,7 @@ previous_heart_problems = st.selectbox('Previous Heart Problems', ['No', 'Yes'],
 medication_use = st.selectbox('Medication Use', ['No', 'Yes'], index=1 if defaults['Medication Use'] == 1 else 0)
 stress_level = st.slider('Stress Level', min_value=0, max_value=10, value=defaults['Stress Level'])
 sedentary_hours_per_day = st.slider('Sedentary Hours Per Day', min_value=0, max_value=24, value=defaults['Sedentary Hours Per Day'])
-income = st.number_input('Income per year (rounded to the nearest integer)', value=defaults['Income'])
+income = st.number_input('Income per year', value=defaults['Income'])
 bmi = st.slider('BMI', min_value=15, max_value=40, value=defaults['BMI'])
 triglycerides = st.slider('Triglycerides (basically fat stored in the blood, so high = bad)', min_value=50, max_value=600, value=defaults['Triglycerides'])
 physical_activity_days_per_week = st.slider('Physical Activity Days Per Week', min_value=0, max_value=7, value=defaults['Physical Activity Days Per Week'])
