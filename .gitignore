@@ -7,3 +7,8 @@ include/
 lib/
 lib64/
 venv/
+etc/jupyter/nbconfig/notebook.d/
+share/jupyter/nbextensions/pydeck/
+policy.json
+pyvenv.cfg
+
