@@ -114,7 +114,7 @@ data_input = {
     'Alcohol Consumption': alcohol_consumption,
     'Previous Heart Problems': previous_heart_problems,
     'Medication Use': medication_use,
-    'Cholesterol_sample_split': cholesterol,  # Assuming this is the correct mapping
+    'Cholesterol': cholesterol,  
     'Sex': sex,
     'Continent': continent,
     'Diet': diet,
