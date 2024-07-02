@@ -3,6 +3,7 @@ import pandas as pd
 import pickle
 
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import precision_score
 from utils import load_data, create_new_features, select_features, define_preprocessing_pipeline, train_model, evaluate_model, preprocess, predict
 
 import config
@@ -39,7 +40,7 @@ if __name__ == "__main__":
                                                         random_state=6)
 
     # Train model
-    print("Training model...")
+    print("Training XGBClassifier model...")
     preproc_basic = define_preprocessing_pipeline(continuous_vars, categorical_vars)
     model = train_model(X_train, y_train, preproc_basic)
 
@@ -51,8 +52,11 @@ if __name__ == "__main__":
 
     # Evaluate model
     print("Evaluating model...")
-    score, cv_score = evaluate_model(model, X_test, y_test)
-    print(f"Accuracy: {score}, Cross-validated Accuracy: {cv_score}")
+    y_pred_probs = model.predict_proba(preproc_basic.transform(X_test))[:, 1]
+    threshold = config.BEST_TRESHOLD
+    y_pred_binary = (y_pred_probs > threshold).astype(int)
+    precision = precision_score(y_test, y_pred_binary)
+    print(f"Precision on test set: {precision}")
 
     # Load test data
     print(f"Loading test data from: {config.TEST_DATA_PATH}")
@@ -61,6 +65,8 @@ if __name__ == "__main__":
     df_input = create_new_features(df_input)
     df_input = select_features(df_input, continuous_vars, categorical_vars)
 
-    # Predict
-    predictions = model.predict(df_input)
+    # Predict using the saved model
+    predictions_probs = model.predict_proba(preproc_basic.transform(df_input))[:, 1]
+    predictions = (predictions_probs > threshold).astype(int)
+
     print(predictions)

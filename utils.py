@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from sklearn.svm import SVC
+from xgboost import XGBClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
@@ -81,12 +81,6 @@ def preprocess(df, continuous_vars, categorical_vars, preproc_basic):
     # Preprocess data using the preprocessor
     X_preprocessed = preproc_basic.transform(X_selected)
 
-    # Ensure X_preprocessed is a DataFrame for better understanding of the columns.
-    # X_preprocessed_df = pd.DataFrame(X_preprocessed, columns=preproc_basic.get_feature_names_out())
-    # print(f"Features before preprocessing: {X_selected.columns}")
-    #print(f"Features after preprocessing: {X_preprocessed_df.columns}")
-    #print(f"Shape of preprocessed data: {X_preprocessed_df.shape}")
-
     return X_preprocessed
 
 def train_model(X_train, y_train, preproc_basic):
@@ -94,12 +88,12 @@ def train_model(X_train, y_train, preproc_basic):
     Trains the SVM model.
     Returns a Pipeline: Trained SVM model pipeline.
     """
-    svm_pipe = Pipeline([
+    xgb_pipe = Pipeline([
         ("preprocessor", preproc_basic),
-        ("classifier", SVC(random_state=6)),
+        ("classifier", XGBClassifier(random_state=6)),
     ])
-    svm_pipe.fit(X_train, y_train)
-    return svm_pipe
+    xgb_pipe.fit(X_train, y_train)
+    return xgb_pipe
 
 
 def evaluate_model(model, X_test, y_test):
@@ -108,7 +102,7 @@ def evaluate_model(model, X_test, y_test):
     Returns a float: Accuracy score.
     """
     score = model.score(X_test, y_test)
-    cv_score = cross_val_score(model, X_test, y_test, cv=5, scoring="accuracy").mean()
+    cv_score = cross_val_score(model, X_test, y_test, cv=5, scoring="precision").mean()
     return score, cv_score
 
 

@@ -3,7 +3,9 @@
 TRAIN_DATA_PATH = "data/train.csv"
 TEST_DATA_PATH = "data/test.csv"
 # MODEL_PATH = "models/model_final_svm.pkl"
-MODEL_PATH = "models/model_final_probability.pkl"
+MODEL_PATH = "models/xgb_model.pkl"
+
+BEST_TRESHOLD = 0.5306122448979592
 
 # to select variables
 CONTINUOUS_VARS = [

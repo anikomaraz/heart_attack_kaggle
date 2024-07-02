@@ -5,6 +5,7 @@ pandas
 # ml
 scikit-learn
 joblib
+xgboost
 
 # API
 requests
