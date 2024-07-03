@@ -2,7 +2,6 @@ FROM python:3.10.6-buster
 
 WORKDIR Heart_Risk_Kaggle/
 
-COPY .venv .venv
 COPY requirements.txt requirements.txt
 COPY fastapi_.py fastapi_.py
 COPY config.py config.py

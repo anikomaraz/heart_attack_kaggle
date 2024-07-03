@@ -17,10 +17,10 @@ app = FastAPI()
 @app.post("/predict")
 def predict(data_input: dict):
     try:
-        # Convert input data to DataFrame (for demonstration)
+        # Convert input data to DataFrame
         df_input = pd.DataFrame([data_input])
 
-        # Preprocessing steps (replace with actual preprocessing functions)
+        # Preprocessing steps
         df_input = create_new_features(df_input)
         df_input = select_features(df_input, config.CONTINUOUS_VARS, config.CATEGORICAL_VARS)
 
