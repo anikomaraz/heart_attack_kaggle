@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
 
-from sklearn.svm import SVC
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.model_selection import cross_val_score
+from xgboost import XGBClassifier
 
 def load_data(file_path):
     """
@@ -47,7 +47,6 @@ def select_features(df, continuous_vars, categorical_vars):
     selected_features = continuous_vars + categorical_vars
     return df[selected_features]
 
-
 def define_preprocessing_pipeline(continuous_vars, categorical_vars):
     """
     Defines the preprocessing pipeline for the data.
@@ -81,26 +80,26 @@ def preprocess(df, continuous_vars, categorical_vars, preproc_basic):
     # Preprocess data using the preprocessor
     X_preprocessed = preproc_basic.transform(X_selected)
 
-    # Ensure X_preprocessed is a DataFrame for better understanding of the columns.
-    # X_preprocessed_df = pd.DataFrame(X_preprocessed, columns=preproc_basic.get_feature_names_out())
-    # print(f"Features before preprocessing: {X_selected.columns}")
-    #print(f"Features after preprocessing: {X_preprocessed_df.columns}")
-    #print(f"Shape of preprocessed data: {X_preprocessed_df.shape}")
-
     return X_preprocessed
 
 def train_model(X_train, y_train, preproc_basic):
     """
-    Trains the SVM model.
-    Returns a Pipeline: Trained SVM model pipeline.
+    Trains the XGBoost model.
+    Returns a Pipeline: Trained XGBoost model pipeline.
     """
-    svm_pipe = Pipeline([
+    xgb_pipe = Pipeline([
         ("preprocessor", preproc_basic),
-        ("classifier", SVC(random_state=6)),
+        ("classifier", XGBClassifier(random_state=6, objective='binary:logistic')),
     ])
-    svm_pipe.fit(X_train, y_train)
-    return svm_pipe
+    xgb_pipe.fit(X_train, y_train)
+    return xgb_pipe
 
+def apply_probability_threshold(probabilities, threshold):
+    """
+    Applies a threshold to convert probabilities into binary predictions.
+    Returns an ndarray: Binary predictions (0 or 1).
+    """
+    return (probabilities > threshold).astype(int)
 
 def evaluate_model(model, X_test, y_test):
     """
@@ -108,17 +107,13 @@ def evaluate_model(model, X_test, y_test):
     Returns a float: Accuracy score.
     """
     score = model.score(X_test, y_test)
-    cv_score = cross_val_score(model, X_test, y_test, cv=5, scoring="accuracy").mean()
+    cv_score = cross_val_score(model, X_test, y_test, cv=5, scoring="precision").mean()
     return score, cv_score
-
-
-
 
 def predict(model, X_preprocessed):
     """
     Makes predictions using the trained model and preprocessed data.
     Returns an ndarray: Predictions.
     """
-    print("Making predictions...")
-    predictions = model.predict(X_preprocessed)
-    return predictions
+    probabilities = model.predict_proba(X_preprocessed)[:, 1]  # Probability of positive class
+    return probabilities
