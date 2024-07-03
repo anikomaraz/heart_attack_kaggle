@@ -66,6 +66,7 @@ This project was done for the [Heart Attack Risk Analysis](https://www.kaggle.co
 
 - I am currently 46th on the Kaggle competition 
 - The model (optimised for precision) runs in production
+- it's hard to get high risk on the model, so I am currently checking this issue
 
 
 
