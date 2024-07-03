@@ -1,23 +1,15 @@
-import numpy as np
-import pandas as pd
 import pickle
-
 from sklearn.model_selection import train_test_split
-from utils import load_data, create_new_features, select_features, define_preprocessing_pipeline, train_model, evaluate_model, preprocess, predict
+from sklearn.metrics import precision_score
 
 import config
-
-
-
+from utils import (load_data, create_new_features, select_features, define_preprocessing_pipeline, train_model,
+                   evaluate_model, preprocess, predict, apply_probability_threshold)
 
 if __name__ == "__main__":
     file_path = config.TRAIN_DATA_PATH
-
     continuous_vars = config.CONTINUOUS_VARS
-
     categorical_vars = config.CATEGORICAL_VARS
-
-
 
     # Load data
     print(f"Loading data from: {file_path}")
@@ -27,11 +19,9 @@ if __name__ == "__main__":
     print("Creating new features...")
     df = create_new_features(df_raw_train)
 
-
     # Select features
     print("Selecting features...")
     X_selected = select_features(df, continuous_vars, categorical_vars)
-
 
     # Train-Test split
     print("Performing train-test split...")
@@ -51,16 +41,20 @@ if __name__ == "__main__":
 
     # Evaluate model
     print("Evaluating model...")
-    score, cv_score = evaluate_model(model, X_test, y_test)
-    print(f"Accuracy: {score}, Cross-validated Accuracy: {cv_score}")
+    y_pred = model.predict(X_test)
+    precision = precision_score(y_test, y_pred)
+    print(f"Precision: {precision}")
 
     # Load test data
     print(f"Loading test data from: {config.TEST_DATA_PATH}")
     df_input = load_data(config.TEST_DATA_PATH)
-
     df_input = create_new_features(df_input)
     df_input = select_features(df_input, continuous_vars, categorical_vars)
 
-    # Predict
-    predictions = model.predict(df_input)
+    # Predict probabilities
+    print("Making predictions...")
+    probabilities = model.predict_proba(df_input)[:, 1]
+
+    # Apply threshold
+    predictions = apply_probability_threshold(probabilities, config.BEST_TRESHOLD)
     print(predictions)
