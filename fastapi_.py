@@ -2,8 +2,7 @@ from fastapi import FastAPI, HTTPException
 import pickle
 import pandas as pd
 
-# Assuming these imports are needed for preprocessing and model loading
-from utils import create_new_features, select_features
+from utils import create_new_features, select_features, apply_probability_threshold
 import config
 
 # Load the model
@@ -26,7 +25,8 @@ def predict(data_input: dict):
         df_input = select_features(df_input, config.CONTINUOUS_VARS, config.CATEGORICAL_VARS)
 
         # Predict
-        prediction = model.predict(df_input)[0]
+        probabilities = model.predict_proba(df_input)[:, 1]
+        prediction = apply_probability_threshold(probabilities, config.BEST_TRESHOLD)
         prediction_friendly = "HIGH RISK" if prediction == 1 else "LOW RISK"
 
         # Return prediction result

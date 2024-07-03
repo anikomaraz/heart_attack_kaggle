@@ -8,7 +8,7 @@ COPY fastapi_.py fastapi_.py
 COPY config.py config.py
 COPY utils.py utils.py
 COPY data/train.csv data/train.csv
-COPY models/model_final_svm.pkl models/model_final_svm.pkl
+COPY models/xgb_model.pkl models/xgb_model.pkl
 
 RUN pip install -U pip
 RUN pip install -r requirements.txt

@@ -56,5 +56,5 @@ if __name__ == "__main__":
     probabilities = model.predict_proba(df_input)[:, 1]
 
     # Apply threshold
-    predictions = apply_probability_threshold(probabilities, config.BEST_TRESHOLD)
-    print(predictions)
+    prediction = apply_probability_threshold(probabilities, config.BEST_TRESHOLD)
+    # print(prediction)
