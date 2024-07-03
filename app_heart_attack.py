@@ -33,26 +33,26 @@ st.markdown("""
 
 # Define default values for features
 defaults = {
-    "Age": 50,
+    "Age": 67,
     "Sex": "Male",
-    "Cholesterol": 200,
-    "Blood Pressure": "120/90",
-    "Heart Rate": 60,
+    "Cholesterol": 208,
+    "Blood Pressure": "158/88",
+    "Heart Rate": 72,
     "Diabetes": 0,
-    "Family History": 1,
+    "Family History": 0,
     "Smoking": 1,
-    "Obesity": 1,
+    "Obesity": 0,
     "Alcohol Consumption": 1,
-    "Exercise Hours Per Week": 7,
-    "Diet": "Unhealthy",
+    "Exercise Hours Per Week": 4,
+    "Diet": "Average",
     "Previous Heart Problems": 0,
-    "Medication Use": 1,
-    "Stress Level": 2,
-    "Sedentary Hours Per Day": 1,
-    "Income": 184066,
-    "BMI": 30,
-    "Triglycerides": 63,
-    "Physical Activity Days Per Week": 7,
+    "Medication Use": 0,
+    "Stress Level": 9,
+    "Sedentary Hours Per Day": 7,
+    "Income": 261404,
+    "BMI": 31,
+    "Triglycerides": 286,
+    "Physical Activity Days Per Week": 0,
     "Sleep Hours Per Day": 6,
     "Country": "Argentina",
     "Continent": "South America",
@@ -72,7 +72,7 @@ countries = [
 age = st.slider('Age', min_value=18, max_value=100, value=defaults['Age'])
 sex = st.selectbox('Sex', ['Male', 'Female'], index=0 if defaults['Sex'] == 'Male' else 1)
 cholesterol = st.slider('Cholesterol', min_value=100, max_value=300, value=defaults['Cholesterol'])
-blood_pressure = st.selectbox('Blood Pressure', ["90/60", "120/90", "180/140"], index=1 if defaults['Blood Pressure'] == "120/90" else 0)
+blood_pressure = st.selectbox('Blood Pressure', ["90/60", "120/90", "180/140", "158/88"], index=1 if defaults['Blood Pressure'] == "120/90" else 0)
 heart_rate = st.slider('Heart Rate', min_value=50, max_value=100, value=defaults['Heart Rate'])
 diabetes = st.selectbox('Diabetes', ['No', 'Yes'], index=1 if defaults['Diabetes'] == 1 else 0)
 family_history = st.selectbox('Family History', ['No', 'Yes'], index=1 if defaults['Family History'] == "Yes" else 0)
@@ -172,8 +172,8 @@ st.markdown("""
 st.markdown('''
     <sup>*</sup>The estimation should be done in ~5 seconds, please be patient. Although this model is far from reflecting reality, it should generally point you to the right direction. 
     Want to get high risk? Then live an unhealthy life! 
-    <br> 
-    Want to see the technical background? Then visit my [GitHub repo](https://github.com/anikomaraz/heart_attack_kaggle).
+    <br> <br>
+    Want to see the technical background? Visit my [GitHub repo](https://github.com/anikomaraz/heart_attack_kaggle).
     <br> <br>
     **Find me, blame me:** aniko.maraz[at]gmail.com  
 ''', unsafe_allow_html=True)
