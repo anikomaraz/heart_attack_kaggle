@@ -169,12 +169,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown('''
-    The estimation should be done in ~5 seconds, please be patient.
+    <i>The estimation should be done in ~5 seconds, please be patient.</i>
     <br><br>
     <sup>*</sup>Although this model is far from reflecting reality, it should generally point you to the right direction. 
     Want to get high risk? Then live an unhealthy life! 
     <br> <br>
-    Want to see the technical background? Visit my [GitHub repo](https://github.com/anikomaraz/heart_attack_kaggle).
+    To learn more about the project's technical background, please visit my [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle).
     <br> <br>
     **Find me, blame me:** aniko.maraz[at]gmail.com  
 ''', unsafe_allow_html=True)
