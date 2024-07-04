@@ -13,12 +13,16 @@ with open(model_path, 'rb') as f:
 # Initialize FastAPI app
 app = FastAPI()
 
+
 # Endpoint to handle POST requests for prediction
 @app.post("/predict")
 def predict(data_input: dict):
     try:
-        # Convert input data to DataFrame
-        df_input = pd.DataFrame([data_input])
+        # Get input data from config for local testing
+        # data_input = config.LOCAL_INPUT_HIGH
+
+        # Get input data from frontend
+        df_input = pd.DataFrame.from_dict(data_input, orient='index').T
 
         # Preprocessing steps
         df_input = create_new_features(df_input)
@@ -34,3 +38,5 @@ def predict(data_input: dict):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
