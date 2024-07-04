@@ -170,10 +170,27 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown('''
-    <sup>*</sup>The estimation should be done in ~5 seconds, please be patient. Although this model is far from reflecting reality, it should generally point you to the right direction. 
+    <sup>*</sup>The estimation should be done in ~5 seconds, please be patient. 
+    <br><br>
+    Although this model is far from reflecting reality, it should generally point you to the right direction. 
     Want to get high risk? Then live an unhealthy life! 
     <br> <br>
     Want to see the technical background? Visit my [GitHub repo](https://github.com/anikomaraz/heart_attack_kaggle).
     <br> <br>
     **Find me, blame me:** aniko.maraz[at]gmail.com  
 ''', unsafe_allow_html=True)
+
+
+# Sidebar
+st.sidebar.markdown(
+    """
+    This project was developed for the [Heart Attack Risk Analysis](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview) competition on Kaggle, with predictions submitted to an ongoing challenge.
+
+    Following extensive feature engineering and the training of six competitive machine learning models, <b>XGBoost</b> was selected and hyperparameter-tuned for <b>probability estimation</b>.
+
+    Although the competition required optimization for accuracy, I prioritized <b>precision</b> in my model to enhance its capability in correctly identifying positive cases.
+
+    Comprehensive project details, versioning, and visualizations can be found in my [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle#).
+    """,
+    unsafe_allow_html=True
+)
