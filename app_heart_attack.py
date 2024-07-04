@@ -71,7 +71,12 @@ countries = [
 age = st.slider('Age', min_value=18, max_value=100, value=defaults['Age'])
 sex = st.selectbox('Sex', ['Male', 'Female'], index=0 if defaults['Sex'] == 'Male' else 1)
 cholesterol = st.slider('Cholesterol', min_value=100, max_value=300, value=defaults['Cholesterol'])
-blood_pressure = st.selectbox('Blood Pressure', ["90/60", "120/90", "180/140", "158/88"], index=1 if defaults['Blood Pressure'] == "158/88" else 0)
+
+options_blood_pressure = ["90/60", "120/90", "180/140", "158/88"]
+selected_index = next((i for i, option in enumerate(options_blood_pressure) if option == defaults['Blood Pressure']), 0)
+blood_pressure = st.selectbox('Blood Pressure', options_blood_pressure, index=selected_index)
+# blood_pressure = st.selectbox('Blood Pressure', ["90/60", "120/90", "180/140", "158/88"], index=1 if defaults['Blood Pressure'] == "158/88" else 0)
+
 heart_rate = st.slider('Heart Rate', min_value=50, max_value=100, value=defaults['Heart Rate'])
 diabetes = st.selectbox('Diabetes', ['No', 'Yes'], index=1 if defaults['Diabetes'] == 1 else 0)
 family_history = st.selectbox('Family History', ['No', 'Yes'], index=1 if defaults['Family History'] == "Yes" else 0)
