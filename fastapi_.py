@@ -1,4 +1,6 @@
 from fastapi import FastAPI, HTTPException
+
+
 import pickle
 import pandas as pd
 
@@ -12,6 +14,7 @@ with open(model_path, 'rb') as f:
 
 # Initialize FastAPI app
 app = FastAPI()
+
 
 
 # Endpoint to handle POST requests for prediction

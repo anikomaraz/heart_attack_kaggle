@@ -1,6 +1,9 @@
 import streamlit as st
 import requests
 
+
+
+
 st.markdown("""
     <style>
     .centered-text {
@@ -31,41 +34,65 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Define default values for features
+
 defaults = {
-    "Age": 67,
+    "Age": 36,
     "Sex": "Male",
-    "Cholesterol": 208,
-    "Blood Pressure": "158/88",
-    "Heart Rate": 72,
-    "Diabetes": 0,
+    "Cholesterol": 133,
+    "Blood Pressure": "161/90",
+    "Heart Rate": 97,
+    "Diabetes": 1,
     "Family History": 0,
     "Smoking": 1,
-    "Obesity": 0,
+    "Obesity": 1,
     "Alcohol Consumption": 1,
     "Exercise Hours Per Week": 4,
-    "Diet": "Average",
-    "Previous Heart Problems": 0,
+    "Diet": "Healthy",
+    "Previous Heart Problems": 1,
     "Medication Use": 0,
-    "Stress Level": 9,
-    "Sedentary Hours Per Day": 7,
-    "Income": 261404,
-    "BMI": 31,
-    "Triglycerides": 286,
-    "Physical Activity Days Per Week": 0,
-    "Sleep Hours Per Day": 6,
-    "Country": "Argentina",
-    "Continent": "South America",
-    "Hemisphere": "Southern Hemisphere",
+    "Stress Level": 10,
+    "Sedentary Hours Per Day": 10,
+    "Income": 223132,
+    "BMI": 22,
+    "Triglycerides": 605,
+    "Physical Activity Days Per Week": 5,
+    "Sleep Hours Per Day": 10,
+    "Country": "Canada",
+    "Continent": "North America",
+    "Hemisphere": "Northern Hemisphere",
     "Heart Attack Risk": 1
 }
+
+
 
 hemispheres = ["Southern Hemisphere", "Northern Hemisphere"]
 continents = ["South America", "Africa", "Asia", "Europe", "North America", "Australia"]
 countries = [
-    "Argentina", "Nigeria", "Thailand", "Spain", "Germany", "France", "South Africa",
-    "Colombia", "Italy", "China", "Vietnam", "United States", "United Kingdom", "Canada",
-    "Japan", "New Zealand", "Brazil", "India", "South Korea", "Australia"
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia",
+    "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
+    "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+    "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia",
+    "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Croatia", "Cuba", "Cyprus",
+    "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador",
+    "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia",
+    "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti",
+    "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast",
+    "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia",
+    "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi",
+    "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia",
+    "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal",
+    "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan",
+    "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar",
+    "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa",
+    "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
+    "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan",
+    "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand",
+    "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda",
+    "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu",
+    "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
 ]
+
+
 
 # Widgets for user inputs with default values
 age = st.slider('Age', min_value=18, max_value=100, value=defaults['Age'])
@@ -75,6 +102,7 @@ cholesterol = st.slider('Cholesterol', min_value=100, max_value=300, value=defau
 options_blood_pressure = ["90/60", "120/90", "180/140", "158/88"]
 selected_index = next((i for i, option in enumerate(options_blood_pressure) if option == defaults['Blood Pressure']), 0)
 blood_pressure = st.selectbox('Blood Pressure', options_blood_pressure, index=selected_index)
+
 # blood_pressure = st.selectbox('Blood Pressure', ["90/60", "120/90", "180/140", "158/88"], index=1 if defaults['Blood Pressure'] == "158/88" else 0)
 
 heart_rate = st.slider('Heart Rate', min_value=50, max_value=100, value=defaults['Heart Rate'])
@@ -126,6 +154,9 @@ data_input = {
     'Hemisphere': hemisphere,
 }
 
+
+
+
 st.markdown("""
 <br>
 <br>
@@ -137,9 +168,9 @@ st.markdown("""
 # Button to trigger prediction or processing
 if st.button('Predict'):
     docker_url = 'https://heart-attack-app-33s7xrm4hq-od.a.run.app/predict'
-
+    fastapi_url = 'http://localhost:8000/predict'
     try:
-        response = requests.post(docker_url, json=data_input)
+        response = requests.post(fastapi_url, json=data_input)
 
         if response.status_code == 200:
             heart_attack_prediction = response.json()
