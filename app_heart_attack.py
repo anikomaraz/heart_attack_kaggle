@@ -1,16 +1,13 @@
 import streamlit as st
 import requests
 
-
-
-
 st.markdown("""
     <style>
     .centered-text {
         text-align: center;
     }
     .centered-text h1 {
-        font-size: 45px;  
+        font-size: 45px;
         font-weight: bold;
     }
     </style>
@@ -22,9 +19,9 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 st.markdown("""
-This is a unique opportunity to fake-predict your heart risk based on fake data provided by Kaggle.  
-Please enter your fake data - you are welcome to modify the default values.  
-  
+This is a unique opportunity to fake-predict your heart risk based on fake data provided by Kaggle.
+Please enter your fake data - you are welcome to modify the default values.
+
 
 """, unsafe_allow_html=True)
 
@@ -34,7 +31,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Define default values for features
-
 defaults = {
     "Age": 36,
     "Sex": "Male",
@@ -64,34 +60,34 @@ defaults = {
 }
 
 
-
 hemispheres = ["Southern Hemisphere", "Northern Hemisphere"]
 continents = ["South America", "Africa", "Asia", "Europe", "North America", "Australia"]
 countries = [
-    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia",
-    "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
-    "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
-    "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia",
-    "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Croatia", "Cuba", "Cyprus",
-    "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador",
-    "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia",
-    "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti",
-    "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast",
-    "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia",
-    "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi",
-    "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia",
-    "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal",
-    "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan",
-    "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar",
-    "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa",
-    "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
-    "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan",
-    "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Thailand",
-    "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda",
-    "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu",
-    "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+    "Argentina", "Nigeria", "Thailand", "Spain", "Germany", "France", "South Africa",
+    "Colombia", "Italy", "China", "Vietnam", "United States", "United Kingdom", "Canada",
+    "Japan", "New Zealand", "Brazil", "India", "South Korea", "Australia", "Afghanistan",
+    "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Armenia", "Austria",
+    "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
+    "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brunei",
+    "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Central African Republic",
+    "Chad", "Chile", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica",
+    "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+    "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia",
+    "Fiji", "Finland", "Gabon", "Gambia", "Georgia", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
+    "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "Indonesia", "Iran", "Iraq",
+    "Ireland", "Israel", "Ivory Coast", "Jamaica", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo",
+    "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein",
+    "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands",
+    "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco",
+    "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Nicaragua", "Niger", "North Macedonia",
+    "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
+    "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines",
+    "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
+    "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Sudan", "Sri Lanka", "Sudan", "Suriname",
+    "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago",
+    "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "Uruguay", "Uzbekistan",
+    "Vanuatu", "Vatican City", "Venezuela", "Yemen", "Zambia", "Zimbabwe"
 ]
-
 
 
 # Widgets for user inputs with default values
@@ -102,7 +98,6 @@ cholesterol = st.slider('Cholesterol', min_value=100, max_value=300, value=defau
 options_blood_pressure = ["90/60", "120/90", "180/140", "158/88"]
 selected_index = next((i for i, option in enumerate(options_blood_pressure) if option == defaults['Blood Pressure']), 0)
 blood_pressure = st.selectbox('Blood Pressure', options_blood_pressure, index=selected_index)
-
 # blood_pressure = st.selectbox('Blood Pressure', ["90/60", "120/90", "180/140", "158/88"], index=1 if defaults['Blood Pressure'] == "158/88" else 0)
 
 heart_rate = st.slider('Heart Rate', min_value=50, max_value=100, value=defaults['Heart Rate'])
@@ -154,23 +149,20 @@ data_input = {
     'Hemisphere': hemisphere,
 }
 
-
-
-
 st.markdown("""
 <br>
 <br>
 
 #### Ready to know your ~fake-heart risk~ fake heart risk?<sup>*</sup>
-##### You have: 
+##### You have:
 """, unsafe_allow_html=True)
 
 # Button to trigger prediction or processing
 if st.button('Predict'):
     docker_url = 'https://heart-attack-app-33s7xrm4hq-od.a.run.app/predict'
-    fastapi_url = 'http://localhost:8000/predict'
+
     try:
-        response = requests.post(fastapi_url, json=data_input)
+        response = requests.post(docker_url, json=data_input)
 
         if response.status_code == 200:
             heart_attack_prediction = response.json()
@@ -194,7 +186,7 @@ if st.button('Predict'):
                     """, unsafe_allow_html=True)
         else:
             st.error('Failed to get prediction.')
-            #st.write(f"Error details: {response.text}")
+
     except requests.exceptions.RequestException as e:
         st.error(f'Error: {e}')
 
@@ -207,12 +199,12 @@ st.markdown("""
 st.markdown('''
     <i>The estimation should be done in ~5 seconds, please be patient.</i>
     <br><br>
-    <sup>*</sup>Although this model is far from reflecting reality, it should generally point you to the right direction. 
-    Want to get high risk? Then live an unhealthy life! 
+    <sup>*</sup>Although this model is far from reflecting reality, it should generally point you to the right direction.
+    Want to get high risk? Then live an unhealthy life!
     <br> <br>
     To learn more about the project's technical background, please visit my [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle).
     <br> <br>
-    **Find me, blame me:** aniko.maraz[at]gmail.com  
+    **Find me, blame me:** aniko.maraz[at]gmail.com
 ''', unsafe_allow_html=True)
 
 
