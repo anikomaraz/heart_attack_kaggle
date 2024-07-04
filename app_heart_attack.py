@@ -20,9 +20,8 @@ st.markdown("""
 
 st.markdown("""
 This is a unique opportunity to fake-predict your heart risk based on fake data provided by Kaggle.  
-All you need to do is fake-fill-out the questionnaire below. I save you some work by providing default values which you are welcome to modify.  
-
-[Kaggle competition](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview)  
+Please enter your fake data - you are welcome to modify the default values.  
+  
 
 """, unsafe_allow_html=True)
 
@@ -170,9 +169,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown('''
-    <sup>*</sup>The estimation should be done in ~5 seconds, please be patient. 
+    The estimation should be done in ~5 seconds, please be patient.
     <br><br>
-    Although this model is far from reflecting reality, it should generally point you to the right direction. 
+    <sup>*</sup>Although this model is far from reflecting reality, it should generally point you to the right direction. 
     Want to get high risk? Then live an unhealthy life! 
     <br> <br>
     Want to see the technical background? Visit my [GitHub repo](https://github.com/anikomaraz/heart_attack_kaggle).
