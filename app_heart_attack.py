@@ -104,6 +104,7 @@ selected_index = next((i for i, option in enumerate(options_blood_pressure) if o
 blood_pressure = st.selectbox('Blood Pressure', options_blood_pressure, index=selected_index)
 
 # blood_pressure = st.selectbox('Blood Pressure', ["90/60", "120/90", "180/140", "158/88"], index=1 if defaults['Blood Pressure'] == "158/88" else 0)
+
 heart_rate = st.slider('Heart Rate', min_value=50, max_value=100, value=defaults['Heart Rate'])
 diabetes = st.selectbox('Diabetes', ['No', 'Yes'], index=1 if defaults['Diabetes'] == 1 else 0)
 family_history = st.selectbox('Family History', ['No', 'Yes'], index=1 if defaults['Family History'] == "Yes" else 0)
