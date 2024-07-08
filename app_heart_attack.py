@@ -209,14 +209,41 @@ st.markdown('''
 
 
 # Sidebar
+# Set custom CSS to style the sidebar background and text
 st.sidebar.markdown(
     """
+    <style>
+    .sidebar .sidebar-content {
+        background-color: #D3D3D3;  /* Medium grey background */
+        padding: 10px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-    **Project Overview: Heart Attack Risk Analysis**
+# Add the content to the sidebar
+# Set custom CSS to style the sidebar background and text
+st.sidebar.markdown(
+    """
+    <style>
+    .sidebar .sidebar-content {
+        background-color: #D3D3D3;  /* Medium grey background */
+        padding: 10px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Add the content to the sidebar
+st.sidebar.markdown(
+    """
+    ## Project Overview: Heart Attack Risk Analysis
 
     This project was developed for the [Heart Attack Risk Analysis](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview) competition on Kaggle, with predictions submitted to an ongoing challenge.
 
-    **Key Project Phases**
+    ### Key Project Phases
 
     1. **Exploratory Data Analysis and Preprocessing:**
        - Explored the dataset thoroughly to uncover patterns and distributions ([see notebook](https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb)).
@@ -225,17 +252,17 @@ st.sidebar.markdown(
     2. **Model Development and Optimization:**
        - Trained and evaluated six machine learning models including Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, and Gradient Boosting.
        - Hyperparameter-tuned the XGBoost and SVM models to improve performance metrics, selected **XGBoost** for best performance.
-       
-    3. **Focus on Precision**
+       - Given the low number of positive cases on the test set, employed **probability estimation** and found an optimal threshold to increase sensitivity.
 
-       Although the competition primarily focused on accuracy, I prioritized <b>precision</b> in my model to enhance its capability in correctly identifying positive cases. This strategic adjustment resulted in a higher confidence level for risk assessment.
+    3. **Focus on Precision:**
+       - Although the competition primarily focused on accuracy, I prioritized **precision** in my model to enhance its capability in correctly identifying positive cases. This strategic adjustment resulted in a higher confidence level for risk assessment.
 
-    **Model Deployment and GitHub Repository**
+    ### Model Deployment and GitHub Repository
 
     - The project evolved through multiple versions, culminating in a deployed application hosted on **Google Cloud Platform** with a Streamlit frontend.
     - For more detailed insights, including comprehensive project details, versioning, and visualizations, visit my [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle#).
-
     """,
     unsafe_allow_html=True
 )
+
 
