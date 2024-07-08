@@ -22,7 +22,7 @@ st.markdown("""
 This is a unique opportunity to fake-predict your heart risk based on fake data provided by Kaggle.
 Please enter your fake data - you are welcome to modify the default values.
 <br>
-&larr; See the sidebar for technical details on the project.
+&#8592; See the sidebar for technical details on the project.
 """, unsafe_allow_html=True)
 
 
