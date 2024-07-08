@@ -211,13 +211,31 @@ st.markdown('''
 # Sidebar
 st.sidebar.markdown(
     """
+
+    **Project Overview: Heart Attack Risk Analysis**
+
     This project was developed for the [Heart Attack Risk Analysis](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview) competition on Kaggle, with predictions submitted to an ongoing challenge.
 
-    Following extensive feature engineering and the training of six competitive machine learning models, <b>XGBoost</b> was selected and hyperparameter-tuned for <b>probability estimation</b>.
+    **Key Project Phases**
 
-    Although the competition required optimization for accuracy, I prioritized <b>precision</b> in my model to enhance its capability in correctly identifying positive cases.
+    1. **Exploratory Data Analysis and Preprocessing:**
+       - Explored the dataset thoroughly to uncover patterns and distributions ([see link](https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb)).
+       - Implemented extensive preprocessing including feature engineering, encoding, normalization, and balancing to prepare the data for modeling.
 
-    Comprehensive project details, versioning, and visualizations can be found in my [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle#).
+    2. **Model Development and Optimization:**
+       - Trained and evaluated six machine learning models including Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, and Gradient Boosting.
+       - Hyperparameter-tuned the XGBoost and SVM models to improve performance metrics, selected XGBoost for best performance.
+
+    3. **Focus on Precision**
+
+       Although the competition primarily focused on accuracy, I prioritized <b>precision</b> in my model to enhance its capability in correctly identifying positive cases. This strategic adjustment resulted in a higher confidence level for risk assessment.
+
+    **Model Deployment and GitHub Repository**
+
+    - The project evolved through multiple versions, culminating in a deployed application hosted on Google Cloud Platform with a Streamlit frontend.
+    - For more detailed insights, including comprehensive project details, versioning, and visualizations, visit my [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle#).
+
     """,
     unsafe_allow_html=True
 )
+
