@@ -1,6 +1,6 @@
-FROM python:3.10.6-buster
+FROM python:3.10.12-slim
 
-WORKDIR Heart_Risk_Kaggle/
+WORKDIR /app
 
 COPY requirements.txt requirements.txt
 COPY fastapi_.py fastapi_.py
@@ -12,4 +12,6 @@ COPY models/xgb_model.pkl models/xgb_model.pkl
 RUN pip install -U pip
 RUN pip install -r requirements.txt
 
-CMD uvicorn fastapi_:app --host 0.0.0.0 --port 8080
+EXPOSE 8080
+
+CMD ["uvicorn", "fastapi_:app", "--host", "0.0.0.0", "--port", "8080"]
