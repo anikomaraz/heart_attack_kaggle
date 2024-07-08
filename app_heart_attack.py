@@ -228,6 +228,7 @@ st.sidebar.markdown(
     <h2 style="color:#228B22;">Project Overview: Heart Attack Risk Analysis</h2>
 
     This project was developed for the <a href="https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview">Heart Attack Risk Analysis</a> competition on Kaggle, with predictions submitted to an ongoing challenge.
+    The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics.
 
     <h3 style="color:#228B22;">Key Project Phases</h3>
 
@@ -240,8 +241,8 @@ st.sidebar.markdown(
         </li>
         <li><b><i style="color:#228B22;">Model Development and Optimization:</i></b>
             <ul>
-                <li>Trained and evaluated six machine learning models including Logistic Regression, <u><i>XGBoost</i></u>, SVM, Decision Tree, Random Forest, and Gradient Boosting.</li>
-                <li>Hyperparameter-tuned the <u><i>XGBoost</i></u> and SVM models to improve performance metrics, selected <u><i>XGBoost</i></u> for best performance.</li>
+                <li>Trained and evaluated six machine learning models including Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, and Gradient Boosting.</li>
+                <li>Hyperparameter-tuned the XGBoost and SVM models to improve performance metrics, selected <u><i>XGBoost</i></u> for best performance.</li>
                 <li>Given the low number of positive cases on the test set, employed <u><i>probability estimation</i></u> and found an optimal threshold to increase sensitivity.</li>
             </ul>
         </li>
