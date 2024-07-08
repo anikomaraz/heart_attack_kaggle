@@ -223,33 +223,6 @@ st.sidebar.markdown(
 )
 
 # Add the content to the sidebar
-# Set custom CSS to style the sidebar background and text
-st.sidebar.markdown(
-    """
-    <style>
-    .sidebar .sidebar-content {
-        background-color: #D3D3D3;  /* Medium grey background */
-        padding: 10px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Set custom CSS to style the sidebar background
-st.sidebar.markdown(
-    """
-    <style>
-    .sidebar .sidebar-content {
-        background-color: #D3D3D3;  /* Medium grey background */
-        padding: 10px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Add the content to the sidebar
 st.sidebar.markdown(
     """
     <h2 style="color:#228B22;">Project Overview: Heart Attack Risk Analysis</h2>
@@ -267,14 +240,14 @@ st.sidebar.markdown(
         </li>
         <li><b><i style="color:#228B22;">Model Development and Optimization:</i></b>
             <ul>
-                <li>Trained and evaluated six machine learning models including Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, and Gradient Boosting.</li>
-                <li>Hyperparameter-tuned the XGBoost and SVM models to improve performance metrics, selected <b><i style="color:#228B22;">XGBoost</i></b> for best performance.</li>
-                <li>Given the low number of positive cases on the test set, employed <b><i style="color:#228B22;">probability estimation</i></b> and found an optimal threshold to increase sensitivity.</li>
+                <li>Trained and evaluated six machine learning models including Logistic Regression, <u><i>XGBoost</i></u>, SVM, Decision Tree, Random Forest, and Gradient Boosting.</li>
+                <li>Hyperparameter-tuned the <u><i>XGBoost</i></u> and SVM models to improve performance metrics, selected <u><i>XGBoost</i></u> for best performance.</li>
+                <li>Given the low number of positive cases on the test set, employed <u><i>probability estimation</i></u> and found an optimal threshold to increase sensitivity.</li>
             </ul>
         </li>
         <li><b><i style="color:#228B22;">Focus on Precision:</i></b>
             <ul>
-                <li>Although the competition primarily focused on accuracy, I prioritized <b><i style="color:#228B22;">precision</i></b> in my model to enhance its capability in correctly identifying positive cases. This strategic adjustment resulted in a higher confidence level for risk assessment.</li>
+                <li>Although the competition primarily focused on accuracy, I prioritized <u><i>precision</i></u> in my model to enhance its capability in correctly identifying positive cases. This strategic adjustment resulted in a higher confidence level for risk assessment.</li>
                 <li>Documentation can be found in <a href="https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb">this notebook</a></li>
             </ul>
         </li>
@@ -282,7 +255,7 @@ st.sidebar.markdown(
 
     <h3 style="color:#228B22;">Model Deployment and GitHub Repository</h3>
 
-    - The project evolved through multiple versions, culminating in a deployed application hosted on <b><i style="color:#228B22;">Google Cloud Platform</i></b> with a Streamlit frontend.
+    - The project evolved through multiple versions, culminating in a deployed application hosted on <u><i>Google Cloud Platform</i></u> with a Streamlit frontend.
     - For more detailed insights, including comprehensive project details, versioning, and visualizations, visit my <a href="https://github.com/anikomaraz/heart_attack_kaggle#">GitHub Repository</a>.
     """,
     unsafe_allow_html=True
