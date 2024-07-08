@@ -236,6 +236,28 @@ st.sidebar.markdown(
     unsafe_allow_html=True
 )
 
+# Set custom CSS to style the sidebar background, text, and titles
+st.sidebar.markdown(
+    """
+    <style>
+    .sidebar .sidebar-content {
+        background-color: #D3D3D3;  /* Medium grey background */
+        padding: 10px;
+    }
+    .sidebar .sidebar-content h2 {
+        color: #228B22;  /* Green color for main titles */
+    }
+    .sidebar .sidebar-content h3 {
+        color: #228B22;  /* Green color for numbered titles */
+    }
+    .sidebar .sidebar-content p {
+        font-size: 14px; /* Adjust paragraph font size if needed */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Add the content to the sidebar
 st.sidebar.markdown(
     """
@@ -245,24 +267,25 @@ st.sidebar.markdown(
 
     ### Key Project Phases
 
-    1. **Exploratory Data Analysis and Preprocessing:**
+    1. **_Exploratory Data Analysis and Preprocessing:_**
        - Explored the dataset thoroughly to uncover patterns and distributions ([see notebook](https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb)).
        - Implemented extensive preprocessing including feature engineering, encoding, normalization, and balancing to prepare the data for modeling.
 
-    2. **Model Development and Optimization:**
+    2. **_Model Development and Optimization:_**
        - Trained and evaluated six machine learning models including Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, and Gradient Boosting.
-       - Hyperparameter-tuned the XGBoost and SVM models to improve performance metrics, selected **XGBoost** for best performance.
-       - Given the low number of positive cases on the test set, employed **probability estimation** and found an optimal threshold to increase sensitivity.
+       - Hyperparameter-tuned the XGBoost and SVM models to improve performance metrics, selected **_XGBoost_** for best performance.
+       - Given the low number of positive cases on the test set, employed **_probability estimation_** and found an optimal threshold to increase sensitivity.
 
-    3. **Focus on Precision:**
-       - Although the competition primarily focused on accuracy, I prioritized **precision** in my model to enhance its capability in correctly identifying positive cases. This strategic adjustment resulted in a higher confidence level for risk assessment.
+    3. **_Focus on Precision:_**
+       - Although the competition primarily focused on accuracy, I prioritized **_precision_** in my model to enhance its capability in correctly identifying positive cases. This strategic adjustment resulted in a higher confidence level for risk assessment.
 
     ### Model Deployment and GitHub Repository
 
-    - The project evolved through multiple versions, culminating in a deployed application hosted on **Google Cloud Platform** with a Streamlit frontend.
+    - The project evolved through multiple versions, culminating in a deployed application hosted on **_Google Cloud Platform_** with a Streamlit frontend.
     - For more detailed insights, including comprehensive project details, versioning, and visualizations, visit my [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle#).
     """,
     unsafe_allow_html=True
 )
+
 
 
