@@ -32,7 +32,7 @@ This project was done for the [Heart Attack Risk Analysis](https://www.kaggle.co
    - Result: **SVM** fit the data the best, 
    - Used this model to make predictions on Kaggle, obtained an accuracy of **0.63776** placing 46th (although places 9-46 had the same accuracy).
 
-3. **[Version 3](https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb)**
+3. **[Version 3](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb)**
    - I trained 6 different models in the pipeline (LogRegression, XGBoost, SVM, Decision Tree, Random Forest, Gradient Boosting and Neural Network)
    - Fine-tuned the XGBoost and SVM models
    - Result: the **fine-tuned XGBoost** did not improve upon the V2 model (accuracy of **0.63776**)
@@ -55,7 +55,7 @@ This project was done for the [Heart Attack Risk Analysis](https://www.kaggle.co
    - Given the low number of positive cases on the test set I decided to employ **probability estimation** and find an optimal **treshold** to classify positive cases.
    - This resulted in 339 positive cases on the Kaggle test dataset, thus the model is more sensitive to pick up high risk
    - accuracy is now 0.59, but precision improved to 0.35
-   - details are in [Version 5](https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb) of the notebook
+   - details are in [Version 5](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb) of the notebook
 
 7. **Redeployment**
    - I redeployed the app with the new model 

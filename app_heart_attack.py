@@ -169,7 +169,7 @@ if st.button('Predict'):
 
         if response.status_code == 200:
             heart_attack_prediction = response.json()
-            # st.write(f"Response JSON: {heart_attack_prediction}")
+
             prediction = heart_attack_prediction.get('my_prediction', 'No prediction returned')
 
             # Determine the color based on the prediction
