@@ -169,7 +169,7 @@ if st.button('Predict'):
 
         if response.status_code == 200:
             heart_attack_prediction = response.json()
-            # st.write(f"Response JSON: {heart_attack_prediction}")
+
             prediction = heart_attack_prediction.get('my_prediction', 'No prediction returned')
 
             # Determine the color based on the prediction
@@ -244,8 +244,8 @@ st.sidebar.markdown(
         </li>
         <li><b><i style="color:#228B22;">Model Development and Optimization:</i></b>
             <ul>
-                <li>Trained and evaluated six machine learning models including Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, and Gradient Boosting.</li>
-                <li>Hyperparameter-tuned the XGBoost and SVM models to improve performance metrics, selected <u><i>XGBoost</i></u> for best performance.</li>
+                <li>Trained and evaluated six machine learning models including Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, Gradient Boosting and Neural Networks.</li>
+                <li>Hyperparameter-tuned the XGBoost, SVM and the Neural Network models to improve performance metrics, selected <u><i>XGBoost</i></u> for best performance.</li>
                 <li>Given the low number of positive cases on the test set, employed <u><i>probability estimation</i></u> and found an optimal threshold to increase sensitivity.</li>
             </ul>
         </li>
