@@ -238,7 +238,7 @@ st.sidebar.markdown(
     <ol>
         <li><b><i style="color:#228B22;">Exploratory Data Analysis and Preprocessing:</i></b>
             <ul>
-                <li>Explored the dataset thoroughly to uncover patterns and distributions (<a href="https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb">see notebook</a>).</li>
+                <li>Explored the dataset thoroughly to uncover patterns and distributions (<a href="https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb">see notebook</a>).</li>
                 <li>Implemented extensive preprocessing including feature engineering, encoding, normalization, and balancing to prepare the data for modeling.</li>
             </ul>
         </li>
@@ -252,7 +252,7 @@ st.sidebar.markdown(
         <li><b><i style="color:#228B22;">Focus on Precision:</i></b>
             <ul>
                 <li>Although the competition primarily focused on accuracy, I prioritized <u><i>precision</i></u> in my model to enhance its capability in correctly identifying positive cases. This strategic adjustment resulted in a higher confidence level for risk assessment.</li>
-                <li>Documentation can be found in <a href="https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb">this notebook</a></li>
+                <li>Documentation can be found in <a href="https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb">this notebook</a></li>
             </ul>
         </li>
     </ol>
