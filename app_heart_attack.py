@@ -64,33 +64,18 @@ defaults = {
 
 
 hemispheres = ["Southern Hemisphere", "Northern Hemisphere"]
-continents = ["South America", "Africa", "Asia", "Europe", "North America", "Australia"]
-countries = [
-    "Argentina", "Nigeria", "Thailand", "Spain", "Germany", "France", "South Africa",
-    "Colombia", "Italy", "China", "Vietnam", "United States", "United Kingdom", "Canada",
-    "Japan", "New Zealand", "Brazil", "India", "South Korea", "Australia", "Afghanistan",
-    "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Armenia", "Austria",
-    "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
-    "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brunei",
-    "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Central African Republic",
-    "Chad", "Chile", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica",
-    "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
-    "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia",
-    "Fiji", "Finland", "Gabon", "Gambia", "Georgia", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
-    "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "Indonesia", "Iran", "Iraq",
-    "Ireland", "Israel", "Ivory Coast", "Jamaica", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo",
-    "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein",
-    "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands",
-    "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco",
-    "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Nicaragua", "Niger", "North Macedonia",
-    "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
-    "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines",
-    "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
-    "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Sudan", "Sri Lanka", "Sudan", "Suriname",
-    "Sweden", "Switzerland", "Syria", "Tajikistan", "Tanzania", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago",
-    "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "Uruguay", "Uzbekistan",
-    "Vanuatu", "Vatican City", "Venezuela", "Yemen", "Zambia", "Zimbabwe"
-]
+continents = {
+    "Southern Hemisphere": ["South America", "Africa", "Australia"],
+    "Northern Hemisphere": ["Asia", "Europe", "North America"]
+}
+countries = {
+    "South America": ["Argentina", "Colombia", "Brazil", "Chile", "Paraguay", "Uruguay", "Peru", "Ecuador", "Guyana", "Suriname"],
+    "Africa": ["Nigeria", "South Africa", "Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cameroon", "Cape Verde"],
+    "Australia": ["Australia", "New Zealand"],
+    "Asia": ["Thailand", "China", "Vietnam", "India", "South Korea", "Afghanistan", "Armenia", "Azerbaijan", "Bahrain", "Bangladesh"],
+    "Europe": ["Spain", "Germany", "France", "Italy", "United Kingdom", "Albania", "Andorra", "Austria", "Belarus", "Belgium"],
+    "North America": ["United States", "Canada", "Mexico", "Bahamas", "Barbados", "Belize", "Costa Rica", "Cuba", "Dominica", "Dominican Republic"]
+}
 
 
 # Widgets for user inputs with default values
@@ -122,9 +107,17 @@ physical_activity_days_per_week = st.slider('Physical Activity Days Per Week', m
 sleep_hours_per_day = st.slider('Sleep Hours Per Day', min_value=4, max_value=14, value=defaults['Sleep Hours Per Day'])
 
 # Interactive display for Country, Continent, and Hemisphere
-country = st.selectbox('Select a Country', countries)
-continent = st.selectbox('Select a Continent', continents)
+# country = st.selectbox('Select a Country', countries)
+# continent = st.selectbox('Select a Continent', continents)
 hemisphere = st.selectbox('Select a Hemisphere', hemispheres)
+
+if hemisphere:
+    available_continents = continents[hemisphere]
+    continent = st.selectbox('Select a Continent', available_continents)
+
+    if continent:
+        available_countries = countries[continent]
+        country = st.selectbox('Select a Country', available_countries)
 
 # Mapping categorical inputs to numeric values
 data_input = {
@@ -203,9 +196,7 @@ st.markdown('''
     <i>The estimation should be done in ~5 seconds, please be patient.</i>
     <br><br>
     <sup>*</sup>Although this model is far from reflecting reality, it should generally point you to the right direction.
-    Want to get high risk? Then live an unhealthy life!
-    <br> <br>
-    To learn more about the project's technical background, please visit my [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle).
+    <br> <br>To learn more about the project's technical background, please visit my [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle). 
     <br> <br>
     **Find me, blame me:** aniko.maraz[at]gmail.com
 ''', unsafe_allow_html=True)
@@ -264,6 +255,4 @@ st.sidebar.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
 
