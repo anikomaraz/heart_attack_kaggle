@@ -64,26 +64,25 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-import streamlit as st
+
 
 # Define the URLs for the buttons
 buttons = [
     {"label": "Go to Prediction 🎯", "url": "https://fake-heart-attack.streamlit.app/Prediction"},
     {"label": "Technical Summary 📈", "url": "https://fake-heart-attack.streamlit.app/Technical_summary"},
     {"label": "Contact 👋", "url": "https://fake-heart-attack.streamlit.app/Contact"},
-    {"label": 'GitHub Repository <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20">',
-        "url": "https://github.com/anikomaraz/heart_attack_kaggle"}
+    {"label": 'GitHub Repository <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20">', "url": "https://github.com/anikomaraz/heart_attack_kaggle"}
 ]
 
-# Create the centered buttons using HTML and CSS
+# Create the centered buttons
 st.markdown(
     """
     <style>
     .center-buttons {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
         height: 100vh;
     }
     .center-buttons a {
@@ -94,6 +93,10 @@ st.markdown(
         font-size: 16px;
         padding: 10px 20px;
         cursor: pointer;
+    }
+    .center-buttons img {
+        vertical-align: middle;
+        margin-left: 5px;
     }
     </style>
     <div class="center-buttons">
