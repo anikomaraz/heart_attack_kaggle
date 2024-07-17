@@ -36,32 +36,27 @@ st.markdown(
 
     <h3>Quick Summary</h3>
 
-    This project was inspired by the [Heart Attack Risk Analysis](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview) competition on Kaggle, with predictions submitted to an ongoing challenge. The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics. Focusing on precision, I developed and deployed my own model currently in production on this website. Below is a quick summary of the app's key phases, steps, and highlights. For detailed information on preprocessing, modeling, and evaluation, refer to the [Technical Summary](https://fake-heart-attack.streamlit.app/Technical_summary).
+    This project was inspired by the [Heart Attack Risk Analysis](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview) competition on Kaggle, with predictions submitted to an ongoing challenge. The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics. However, I decided develop a better model, that focus on identifying high-risk cases (optimise for precision) instead of correctly identifying all cases (optimised for accuracy, as required by Kaggle). Below is a quick summary of the app's key phases, steps, and highlights. For detailed information on preprocessing, modeling, and evaluation, refer to the [Technical Summary](https://fake-heart-attack.streamlit.app/Technical_summary).
 
-    1. **Exploratory Data Analysis and Preprocessing:**
-       - I thoroughly explored the dataset to uncover patterns and distributions ([notebook link](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb)).
-       - Extensive preprocessing included feature engineering, encoding, normalization, and balancing to prepare data for modeling.
+    **Exploratory Data Analysis and Preprocessing:**
+    During this phase, I thoroughly explored the dataset to understand distributions and identify missing data. I applied extensive [preprocessing techniques](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb) including feature engineering, encoding, normalization, and balancing to prepare the data for modeling. 
 
+    **Model Development and Optimization:**
+    The project involved training and evaluating seven machine learning models: Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, Gradient Boosting, and Neural Networks. I hyperparameter-tuned the best-performing models, achieving a placement of 46th in the Kaggle competition with a moderate model accuracy of 63.776%. 
 
-    2. **Model Development and Optimization:**
-       - Trained and evaluated seven machine learning models: Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, Gradient Boosting, and Neural Networks.
-       - Hyperparameter-tuned XGBoost, SVM, and Neural Network models to enhance performance metrics.
+    **Focus on Precision:**
+    This is where my project took a significant turn. I believe that **precision** is a much better metric for measuring model performance than accuracy (as used by Kaggle). Detecting high-risk cases is crucial because misclassification (i.e., labeling high-risk cases as low-risk) can potentially cost lives. Therefore, I prioritized increasing precision over accuracy. I identified **XGBoost** as the highest-performing model and optimized its parameters for the best performance.
 
+    Furthermore, I noticed that the most accurate models (those placing in the top 5+ in the competition) failed to predict any positive cases in the 1,710 test cases, despite 35% of the training data (N=7,035) being labeled as high-risk. To address this, I enhanced my model's sensitivity by applying **probability estimation** and tuning the threshold. This resulted in a 5% improvement in detection. For detailed documentation, refer to [this notebook](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb).
 
-    3. **Focus on Precision:**
-       - I advocate that precision is a better metric than accuracy in this case. Detecting high-risk cases is crucial, which should be the focus of this model instead of classification accuracy as suggested by the competition.
-       - Therefore, I optimized model performance for precision and identified **XGBoost** as the highest performing model.
-       - Given the low number of predicted positive cases on the test set, I utilized **probability estimation** to adjust sensitivity thresholds, resulting in improved high-risk heart attack detection.
-       - Refer to [this notebook](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb) for detailed documentation.
+    **Model Evaluation:**
+    If the model identifies a positive case, it is correct **43% of the time** (precision), meaning it will give a false alarm 57% of the time. 
 
+    ### Model Deployment:
+    After several iterations, the project culminated in deployment on **Google Cloud Platform** with a Streamlit frontend. For comprehensive code, versioning, and visualizations, please visit the [Technical Summary](https://fake-heart-attack.streamlit.app/Technical_summary) on this website.
 
-    4. **Model Evaluation**
-       - If the model identifies a positive case, it is correct **43% of the time** (=precision).
-
-
-    ### Model Deployment
-    - The project progressed through multiple iterations, culminating in deployment on **Google Cloud Platform** with a Streamlit frontend.
-    - For comprehensive project details, versioning, and visualizations, visit the [Technical Summary](https://fake-heart-attack.streamlit.app/Technical_summary) on this website.
+    <br>
+    Happy faking! 😃
     """,
     unsafe_allow_html=True
 )
