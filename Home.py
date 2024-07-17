@@ -88,7 +88,7 @@ git_icon_url = "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.
 # Add GitHub with href format
 st.markdown(f"""
     <br>
-    For more details please visit the project's <a href="https://github.com/anikomaraz/heart_attack_kaggle" target="_blank">GitHub Repository</a> <img src="{git_icon_url}" width="20">
+    For more details please visit the projects <a href="https://github.com/anikomaraz/heart_attack_kaggle" target="_blank">GitHub Repository</a> <img src="{git_icon_url}" width="20">
     <br>
     """, unsafe_allow_html=True)
 
