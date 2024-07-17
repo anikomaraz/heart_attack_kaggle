@@ -17,13 +17,13 @@ st.markdown("""
     h2, h3 {
         color: #228B22;  /* Green color for headings */
     }
-    h4 {
-        color: #ff2b2b;  /* Red color for h4 */
+    h5 {
+        color: #ff2b2b;  /* Red color for h5 */
     }
     </style>
     <div class="centered-text">
         <h1>Welcome to my heart attack risk prediction app. ❤️</h1> 
-        <h4>This is a unique opportunity to fake-predict your heart attack risk. Please note that this model was trained on fake data, so don't take the prediction too seriously. Having said that it should generally point you to the right direction, so if you want to minimise your chance of a heart attack, then live a healthy life!️</h4> 
+        <h5>This is a unique opportunity to fake-predict your heart attack risk. Please note that this model was trained on fake data, so don't take the prediction too seriously. Having said that it should generally point you to the right direction, so if you want to minimise your chance of a heart attack, then live a healthy life!️</h5> 
         <p></p>
         <p></p>
     </div>
