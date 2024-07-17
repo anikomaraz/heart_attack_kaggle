@@ -76,12 +76,16 @@ for button in buttons:
     st.markdown(f'<a href="{button["url"]}"><button style="width: 300px; height: 50px;">{button["label"]}</button></a>', unsafe_allow_html=True)
 
 
-git_icon_url = "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
-
 # Add GitHub
+git_icon_url = "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+# git_icon_url = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+
+# Add GitHub with href format
 st.markdown(f"""
     <br>
-    For more details, go to the Project's [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle) <img src="{git_icon_url}" width="20">
+    Visit the Project's <a href="https://github.com/anikomaraz/heart_attack_kaggle" target="_blank">GitHub Repository</a> <img src="{git_icon_url}" width="20">
     <br>
     """, unsafe_allow_html=True)
+
+
 
