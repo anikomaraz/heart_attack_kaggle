@@ -65,7 +65,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
 # Define the URLs for the buttons
 buttons = [
     {"label": "Go to Prediction 🎯", "url": "https://fake-heart-attack.streamlit.app/Prediction"},
@@ -74,7 +73,7 @@ buttons = [
     {"label": 'GitHub Repository <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20">', "url": "https://github.com/anikomaraz/heart_attack_kaggle"}
 ]
 
-# Create the centered buttons
+# Create the centered buttons using HTML and CSS
 st.markdown(
     """
     <style>
@@ -93,6 +92,7 @@ st.markdown(
         font-size: 16px;
         padding: 10px 20px;
         cursor: pointer;
+        margin-bottom: 10px; /* Add margin between buttons */
     }
     .center-buttons img {
         vertical-align: middle;
@@ -105,8 +105,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
-
-
-
