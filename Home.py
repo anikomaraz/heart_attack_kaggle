@@ -19,8 +19,7 @@ st.markdown("""
     }
     </style>
     <div class="centered-text">
-        <h1>Welcome to my heart attack risk prediction app. ❤️</h1> <br> <br>
-        <h4>This is a unique opportunity to fake-predict your heart risk based on fake data.</h3>4
+        <h1>Welcome to my heart attack risk prediction app. ❤️</h1> 
         <p></p>
         <p></p>
     </div>
@@ -75,3 +74,14 @@ buttons = [
 # Display buttons
 for button in buttons:
     st.markdown(f'<a href="{button["url"]}"><button style="width: 300px; height: 50px;">{button["label"]}</button></a>', unsafe_allow_html=True)
+
+
+git_icon_url = "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+
+# Add GitHub
+st.markdown(f"""
+    <br>
+    For more details, go to the Project's [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle) <img src="{git_icon_url}" width="20">
+    <br>
+    """, unsafe_allow_html=True)
+
