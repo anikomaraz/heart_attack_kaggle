@@ -74,4 +74,4 @@ buttons = [
 
 # Display buttons
 for button in buttons:
-    st.markdown(f'<a href="{button["url"]}"><button style="width: 200px; height: 50px;">{button["label"]}</button></a>', unsafe_allow_html=True)
+    st.markdown(f'<a href="{button["url"]}"><button style="width: 300px; height: 50px;">{button["label"]}</button></a>', unsafe_allow_html=True)
