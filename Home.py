@@ -1,11 +1,9 @@
 import streamlit as st
 
-
 st.set_page_config(
     page_title="Heart Attack App",
     page_icon="💓",
 )
-
 
 st.markdown("""
     <style>
@@ -25,15 +23,14 @@ st.markdown("""
     </div>
     """, unsafe_allow_html=True)
 
-
 st.markdown(
     """
     <h2 style="color:#228B22;"></h2>
-    
+
     <h3 style="color:#228B22;">Quick Summary</h3>
-    
+
     This project was inspired by the <a href="https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview">Heart Attack Risk Analysis</a> competition on Kaggle, with predictions submitted to an ongoing challenge. 
-    The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics. Focusing on precision, I built and deployed my own model which is currently running in production on this website. I will provide a quick summary of the app's features the following phases, steps and highlights. Please look for the ![Technical Summary](https://fake-heart-attack.streamlit.app/Technical_summary) for details on preprocessing, modelling and evaluation.
+    The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics. Focusing on precision, I built and deployed my own model which is currently running in production on this website. I will provide a quick summary of the app's features the following phases, steps and highlights. Please look for the [Technical Summary](https://fake-heart-attack.streamlit.app/Technical_summary) for details on preprocessing, modelling and evaluation.
 
     <ol>
         <li><b><i style="color:#228B22;">Exploratory Data Analysis and Preprocessing:</i></b>
@@ -46,13 +43,13 @@ st.markdown(
             <ul>
                 <li>Trained and evaluated seven machine learning models including Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, Gradient Boosting and Neural Networks.</li>
                 <li>Hyperparameter-tuned the XGBoost, SVM and the Neural Network models to improve performance metrics.</li>
-                
+
             </ul>
         </li>
         <li><b><i style="color:#228B22;">Focus on Precision:</i></b>
             <ul>
-                <li>However, I argue that the cost of missing truly high risk cases is high, therefore <b>precision</> is a more suitable metric of model performance.</li>
-                <li>The model with the highest precision was <b>XGBoost</>.</li>
+                <li>However, I argue that the cost of missing truly high risk cases is high, therefore <b>precision</b> is a more suitable metric of model performance.</li>
+                <li>The model with the highest precision was <b>XGBoost</b>.</li>
                 <li>To further enhance detection and to account for the lack of positive predictions on the test set, I employed <b>probability estimation</b> and found an optimal threshold to increase sensitivity.</li>
                 <li>This strategic adjustment resulted in a higher sensitivity for risk assessment, therefore a better detection for high risk heart attack cases.</li>
                 <li>Documentation can be found in <a href="https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb">this notebook.</a></li>
@@ -63,7 +60,7 @@ st.markdown(
     <h3 style="color:#228B22;">Model Deployment</h3>
 
     - The project evolved through multiple versions, culminating in a deployed application hosted on <b>Google Cloud Platform</b> with a Streamlit frontend.
-    - For more detailed insights, including comprehensive project details, versioning, and visualizations, go to <a href="https://fake-heart-attack.streamlit.app/Technical_summary">Technical Summary</a> on this website, or visit my <a href="https://github.com/anikomaraz/heart_attack_kaggle#">GitHub Repository</a>.
+    - For more detailed insights, including comprehensive project details, versioning, and visualizations, go to [Technical Summary](https://fake-heart-attack.streamlit.app/Technical_summary) on this website, or visit my [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle#).
     """,
     unsafe_allow_html=True
 )
@@ -71,10 +68,9 @@ st.markdown(
 st.markdown("""
     <br>
     <br>
-     <h2 style="color:#228B22;">Choose an Action:</h2>
+    <h2 style="color:#228B22;">Choose an Action:</h2>
     <br>
     """, unsafe_allow_html=True)
-
 
 # GitHub logo URL
 github_logo_url = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
@@ -93,9 +89,9 @@ for button in buttons:
 # Display GitHub repository link with logo
 st.markdown(
     f"""
-    Visit the Project's [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle) 
-    <br>
+    Visit the Project's [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle)  
     <img src="{github_logo_url}" alt="GitHub Logo" width="20">
+    <br>
     """, unsafe_allow_html=True)
 
 
