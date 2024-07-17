@@ -33,7 +33,7 @@ st.markdown(
     <h3 style="color:#228B22;">Quick Summary</h3>
     
     This project was inspired by the <a href="https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview">Heart Attack Risk Analysis</a> competition on Kaggle, with predictions submitted to an ongoing challenge. 
-    The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics. Focusing on precision, I built and deployed my own model which is currently running in production (here). This app features the following phases, steps and highlights:
+    The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics. Focusing on precision, I built and deployed my own model which is currently running in production on this website. I will provide a quick summary of the app's features the following phases, steps and highlights. Please look for the ![Technical Summary](https://fake-heart-attack.streamlit.app/Technical_summary) for details on preprocessing, modelling and evaluation.
 
     <ol>
         <li><b><i style="color:#228B22;">Exploratory Data Analysis and Preprocessing:</i></b>
@@ -45,19 +45,22 @@ st.markdown(
         <li><b><i style="color:#228B22;">Model Development and Optimization:</i></b>
             <ul>
                 <li>Trained and evaluated seven machine learning models including Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, Gradient Boosting and Neural Networks.</li>
-                <li>Hyperparameter-tuned the XGBoost, SVM and the Neural Network models to improve performance metrics, selected <b>XGBoost</b> for best performance.</li>
-                <li>Given the low number of positive cases on the test set, employed <b>probability estimation</b> and found an optimal threshold to increase sensitivity.</li>
+                <li>Hyperparameter-tuned the XGBoost, SVM and the Neural Network models to improve performance metrics.</li>
+                
             </ul>
         </li>
         <li><b><i style="color:#228B22;">Focus on Precision:</i></b>
             <ul>
-                <li>Although the competition primarily focused on accuracy, I prioritized <b>precision</b> in my model to enhance its capability in correctly identifying positive cases. This strategic adjustment resulted in a higher confidence level for risk assessment.</li>
+                <li>However, I argue that the cost of missing truly high risk cases is high, therefore <b>precision</> is a more suitable metric of model performance.</li>
+                <li>The model with the highest precision was <b>XGBoost</>.</li>
+                <li>To further enhance detection and to account for the lack of positive predictions on the test set, I employed <b>probability estimation</b> and found an optimal threshold to increase sensitivity.</li>
+                <li>This strategic adjustment resulted in a higher sensitivity for risk assessment, therefore a better detection for high risk heart attack cases.</li>
                 <li>Documentation can be found in <a href="https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb">this notebook.</a></li>
             </ul>
         </li>
     </ol>
 
-    <h2 style="color:#228B22;">Model Deployment</h2>
+    <h3 style="color:#228B22;">Model Deployment</h3>
 
     - The project evolved through multiple versions, culminating in a deployed application hosted on <b>Google Cloud Platform</b> with a Streamlit frontend.
     - For more detailed insights, including comprehensive project details, versioning, and visualizations, go to <a href="https://fake-heart-attack.streamlit.app/Technical_summary">Technical Summary</a> on this website, or visit my <a href="https://github.com/anikomaraz/heart_attack_kaggle#">GitHub Repository</a>.
@@ -76,17 +79,24 @@ st.markdown("""
 # GitHub logo URL
 github_logo_url = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
 
-# Define the button labels and URLs
+# Define the buttons with HTML formatting
 buttons = [
-    {"label": "Go to Prediction 🎯", "url": "https://fake-heart-attack.streamlit.app/Prediction"},
-    {"label": "See the Technical Summary 📈", "url": "https://fake-heart-attack.streamlit.app/Technical_summary"},
-    {"label": "Contact Me 👋", "url": "https://fake-heart-attack.streamlit.app/Contact"},
-    {"label": f"Visit the Project's GitHub Repository", "url": "https://github.com/anikomaraz/heart_attack_kaggle"}
+    {"label": "Go to <b>Prediction</b> 🎯", "url": "https://fake-heart-attack.streamlit.app/Prediction"},
+    {"label": "See the <b>Technical Summary</b> 📈", "url": "https://fake-heart-attack.streamlit.app/Technical_summary"},
+    {"label": "<b>Contact Me</b> 👋", "url": "https://fake-heart-attack.streamlit.app/Contact"},
+
 ]
 
 # Display buttons
 for button in buttons:
-    if button["label"] == "Visit the Project's GitHub Repository":
-        st.markdown(f"[{button['label']}]({button['url']}) <img src='{github_logo_url}' width='20'>", unsafe_allow_html=True)
-    else:
-        st.button(button["label"], on_click=button["url"])
+    st.write("")  # Empty line for spacing
+    st.button(button["label"], on_click=button["url"], unsafe_allow_html=True)
+
+
+st.markdown("""
+    
+    Visit the Project's ![GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle) <img src='{github_logo_url}' width='20'>
+    <br>
+    """, unsafe_allow_html=True)
+
+
