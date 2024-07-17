@@ -65,43 +65,15 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Define the URLs for the buttons
+# Define the buttons
 buttons = [
     {"label": "Go to Prediction 🎯", "url": "https://fake-heart-attack.streamlit.app/Prediction"},
     {"label": "Technical Summary 📈", "url": "https://fake-heart-attack.streamlit.app/Technical_summary"},
     {"label": "Contact 👋", "url": "https://fake-heart-attack.streamlit.app/Contact"},
-    {"label": 'GitHub Repository <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20">', "url": "https://github.com/anikomaraz/heart_attack_kaggle"}
+    {"label": "GitHub Repository 🐙", "url": "https://github.com/anikomaraz/heart_attack_kaggle"}
 ]
 
-# Create the centered buttons using HTML and CSS
-st.markdown(
-    """
-    <style>
-    .center-buttons {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-    .center-buttons a {
-        margin: 10px;
-        text-decoration: none;
-    }
-    .center-buttons button {
-        font-size: 16px;
-        padding: 10px 20px;
-        cursor: pointer;
-        margin-bottom: 10px; /* Add margin between buttons */
-    }
-    .center-buttons img {
-        vertical-align: middle;
-        margin-left: 5px;
-    }
-    </style>
-    <div class="center-buttons">
-    """ + "\n".join([f'<a href="{button["url"]}" target="_blank"><button>{button["label"]}</button></a>' for button in buttons]) + """
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# Display buttons
+for button in buttons:
+    st.write("")  
+    st.button(button["label"], on_click=button["url"])
