@@ -1,12 +1,34 @@
 import streamlit as st
+import requests
 
-st.set_page_config(page_title="Quick Summary", page_icon="🌠")
+st.set_page_config(
+    page_title="Heart Attack App",
+    page_icon="💓",
+)
 
-st.sidebar.header("Quick Summary")
+
+st.markdown("""
+    <style>
+    .centered-text {
+        text-align: center;
+    }
+    .centered-text h1 {
+        font-size: 45px;
+        font-weight: bold;
+    }
+    </style>
+    <div class="centered-text">
+        <h1>Welcome to my heart attack risk prediction app. ❤️</h1> <br> <br>
+        <h3>This is a unique opportunity to fake-predict your heart risk based on fake data.</h3>
+        <p></p>
+        <p></p>
+    </div>
+    """, unsafe_allow_html=True)
+
 
 st.markdown(
     """
-    <h2 style="color:#228B22;">Quick Summary: Heart Attack Risk Analysis</h2>
+    <h2 style="color:#228B22;"></h2>
 
     This project was developed for the <a href="https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview">Heart Attack Risk Analysis</a> competition on Kaggle, with predictions submitted to an ongoing challenge.
     The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics.
@@ -42,3 +64,15 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+st.button('Go to Prediction 🎯', on_click='https://fake-heart-attack.streamlit.app/Prediction')
+
+st.button('Technical Summary 📈', on_click='https://fake-heart-attack.streamlit.app/Technical_summary')
+
+st.button('Contact 👋', on_click='https://fake-heart-attack.streamlit.app/Contact')
+
+st.button('GitHub Repository :material-github:', on_click='https://github.com/anikomaraz/heart_attack_kaggle')
+
+
+
+

@@ -1,40 +1,18 @@
 import streamlit as st
-import requests
 
-st.set_page_config(
-    page_title="Heart Attack Prediction",
-    page_icon="💓",
-)
+st.set_page_config(page_title="Prediction", page_icon="🎯")
 
-st.markdown("""
-    <style>
-    .centered-text {
-        text-align: center;
-    }
-    .centered-text h1 {
-        font-size: 45px;
-        font-weight: bold;
-    }
-    </style>
-    <div class="centered-text">
-        <h1>Welcome to my heart attack risk prediction app. ❤️</h1>
-        <p></p>
-        <p></p>
-    </div>
-    """, unsafe_allow_html=True)
+st.sidebar.header("Heart Attack Risk Prediction")
 
 
 st.markdown("""
-This is a unique opportunity to fake-predict your heart risk based on fake data provided by Kaggle.
-Please enter your fake data - you are welcome to modify the default values.
+Please enter your data or use / modify the default values to get your heart attack risk prediction.
+
 <br>
-<i><span style="color: red; font-size: 24px; font-weight: bold;">&#8592;</span> See the sidebar for technical details on the project.</i>
+<br>
+ 
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<br>
-<br>
-""", unsafe_allow_html=True)
 
 # Define default values for features
 defaults = {
@@ -191,24 +169,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown('''
-    <i>The estimation should be done in ~5 seconds, please be patient.</i>
+    <i>The estimation should be done in ~5 seconds (or quicker), please be patient.</i>
     <br><br>
     <sup>*</sup>Although this model is far from reflecting reality, it should generally point you to the right direction.
-    <br> <br>To learn more about the project's technical background, please visit my [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle). 
-    <br> <br>
-    **Find me, blame me:** aniko.maraz[at]gmail.com
+    
 ''', unsafe_allow_html=True)
 
-# Sidebar
-# Set custom CSS to style the sidebar background and text
-st.sidebar.markdown(
-    """
-    <style>
-    .sidebar .sidebar-content {
-        background-color: #D3D3D3;  /* Medium grey background */
-        padding: 10px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
