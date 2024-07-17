@@ -77,10 +77,10 @@ st.markdown("""
 github_logo_url = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
 
 buttons = [
-    {"label": "Go to <b>Prediction</b> 🎯", "url": "https://fake-heart-attack.streamlit.app/Prediction"},
-    {"label": "See the <b>Technical Summary</b> 📈", "url": "https://fake-heart-attack.streamlit.app/Technical_summary"},
-    {"label": "<b>Contact Me</b> 👋", "url": "https://fake-heart-attack.streamlit.app/Contact"},
-    {"label": f"Visit the Project's <b>GitHub Repository</b> <img src='{github_logo_url}' width='20'>",
+    {"label": "Go to Prediction 🎯", "url": "https://fake-heart-attack.streamlit.app/Prediction"},
+    {"label": "See the Technical Summary 📈", "url": "https://fake-heart-attack.streamlit.app/Technical_summary"},
+    {"label": "Contact Me 👋", "url": "https://fake-heart-attack.streamlit.app/Contact"},
+    {"label": f"Visit the Project's GitHub Repository <img src='{github_logo_url}' width='20'>",
      "url": "https://github.com/anikomaraz/heart_attack_kaggle"}
 ]
 
