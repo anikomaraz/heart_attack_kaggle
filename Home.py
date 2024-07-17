@@ -20,9 +20,7 @@ st.markdown("""
     h5 {
         color: #ff2b2b;  /* Red color for h5 */
     }
-    h6 {
-        margin-bottom: 0;
-    }
+    
     </style>
     <div class="centered-text">
         <h1>Welcome to my heart attack risk prediction app. ❤️</h1> 
@@ -35,8 +33,12 @@ st.markdown("""
 
 st.markdown(
     """
-    <h2></h2>
-
+    <style>
+    h6 {
+        margin-bottom: 0;
+    }
+    </style>    
+    <br> <br>
     <h3>Quick Summary</h3>
 
     This project was inspired by the <a href="https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview">Heart Attack Risk Analysis</a> competition on Kaggle, with predictions submitted to an ongoing challenge. The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics. However, I decided to develop a better model that focuses on identifying high-risk cases (optimizing for precision) instead of correctly identifying all cases (optimized for accuracy, as required by Kaggle). Below is a quick summary of the app's key phases, steps, and highlights. For detailed information on preprocessing, modeling, and evaluation, refer to the <a href="https://fake-heart-attack.streamlit.app/Technical_summary">Technical Summary</a>.
