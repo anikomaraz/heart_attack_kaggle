@@ -20,7 +20,7 @@ st.markdown("""
     </style>
     <div class="centered-text">
         <h1>Welcome to my heart attack risk prediction app. ❤️</h1> <br> <br>
-        <h3>This is a unique opportunity to fake-predict your heart risk based on fake data.</h3>
+        <h4>This is a unique opportunity to fake-predict your heart risk based on fake data.</h3>4
         <p></p>
         <p></p>
     </div>
@@ -64,8 +64,6 @@ st.markdown("""
     <br>
     """, unsafe_allow_html=True)
 
-# GitHub logo URL
-github_logo_url = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
 
 # Define the buttons with HTML formatting
 buttons = [
@@ -76,4 +74,4 @@ buttons = [
 
 # Display buttons
 for button in buttons:
-    st.button(button["label"], on_click=button["url"], unsafe_allow_html=True)
+    st.markdown(f'<a href="{button["url"]}"><button style="width: 200px; height: 50px;">{button["label"]}</button></a>', unsafe_allow_html=True)
