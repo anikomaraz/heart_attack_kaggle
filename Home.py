@@ -86,12 +86,25 @@ buttons = [
 for button in buttons:
     st.button(button["label"], on_click=button["url"], unsafe_allow_html=True)
 
+
+# GitHub logo URL
+github_logo_url = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+
 # Display GitHub repository link with logo
 st.markdown(
     f"""
     Visit the Project's [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle)  
     <img src="{github_logo_url}" alt="GitHub Logo" width="20">
     <br>
-    """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True
+)
+
+st.markdown(
+    f"""
+    Visit the Project's [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle) 
+    <img src="{github_logo_url}" alt="GitHub Logo" width="20">
+    <br>
+    """, unsafe_allow_html=True
+)
 
 
