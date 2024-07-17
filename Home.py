@@ -23,6 +23,7 @@ st.markdown("""
     </style>
     <div class="centered-text">
         <h1>Welcome to my heart attack risk prediction app. ❤️</h1> 
+        <br>
         <h5>This is a unique opportunity to fake-predict your heart attack risk. Please note that this model was trained on fake data, so don't take the prediction too seriously. Having said that it should generally point you to the right direction, so if you want to minimise your chance of a heart attack, then live a healthy life!️</h5> 
         <p></p>
         <p></p>
@@ -41,9 +42,11 @@ st.markdown(
        - I thoroughly explored the dataset to uncover patterns and distributions ([notebook link](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb)).
        - Extensive preprocessing included feature engineering, encoding, normalization, and balancing to prepare data for modeling.
 
+
     2. **Model Development and Optimization:**
        - Trained and evaluated seven machine learning models: Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, Gradient Boosting, and Neural Networks.
        - Hyperparameter-tuned XGBoost, SVM, and Neural Network models to enhance performance metrics.
+
 
     3. **Focus on Precision:**
        - I advocate that precision is a better metric than accuracy in this case. Detecting high-risk cases is crucial, which should be the focus of this model instead of classification accuracy as suggested by the competition.
@@ -51,8 +54,10 @@ st.markdown(
        - Given the low number of predicted positive cases on the test set, I utilized **probability estimation** to adjust sensitivity thresholds, resulting in improved high-risk heart attack detection.
        - Refer to [this notebook](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb) for detailed documentation.
 
+
     4. **Model Evaluation**
        - If the model identifies a positive case, it is correct **43% of the time** (=precision).
+
 
     ### Model Deployment
     - The project progressed through multiple iterations, culminating in deployment on **Google Cloud Platform** with a Streamlit frontend.
