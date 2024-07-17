@@ -1,4 +1,6 @@
 import streamlit as st
+from PIL import Image
+
 
 st.set_page_config(page_title="Technical Summary", page_icon="📈")
 
@@ -27,7 +29,7 @@ st.markdown(
 
     <p>In order to obtain the highest accuracy, I tested 7 models in the pipeline:</p>
 
-    <img src="../plots/models_accuracy.png" alt="models accuracy" style="width: 50%;">
+    ![Models Accuracy](../plots/models_accuracy.png)
 
     <p>SVM and the Neural Network had the same accuracy, but <b style="color:#228B22;">SVM</b> being a simpler model, I picked this for further processing. By fine-tuning with GridSearchCV, accuracy did not improve much (<b>0.6429</b>). The model was then trained on the entire train dataset, and predictions for the test data were made.</p>
 
