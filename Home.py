@@ -76,29 +76,26 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 
-import streamlit as st
-
 # GitHub logo URL
 github_logo_url = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
 
 # Define the buttons with HTML formatting
 buttons = [
-    {"label": "Go to Prediction 🎯", "url": "https://fake-heart-attack.streamlit.app/Prediction"},
-    {"label": "See the Technical Summary 📈", "url": "https://fake-heart-attack.streamlit.app/Technical_summary"},
-    {"label": "Contact Me 👋", "url": "https://fake-heart-attack.streamlit.app/Contact"},
+    {"label": "Go to <b>Prediction</b> 🎯", "url": "https://fake-heart-attack.streamlit.app/Prediction"},
+    {"label": "See the <b>Technical Summary</b> 📈", "url": "https://fake-heart-attack.streamlit.app/Technical_summary"},
+    {"label": "<b>Contact Me</b> 👋", "url": "https://fake-heart-attack.streamlit.app/Contact"},
 ]
 
 # Display buttons
 for button in buttons:
-    st.write("")  # Empty line for spacing
     st.button(button["label"], on_click=button["url"], unsafe_allow_html=True)
 
 # Display GitHub repository link with logo
 st.markdown(
     f"""
     Visit the Project's [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle) 
-    <img src="{github_logo_url}" width="20">
-    """
-)
+    <br>
+    <img src="{github_logo_url}" alt="GitHub Logo" width="20">
+    """, unsafe_allow_html=True)
 
 
