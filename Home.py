@@ -20,6 +20,9 @@ st.markdown("""
     h5 {
         color: #ff2b2b;  /* Red color for h5 */
     }
+    h6 {
+        margin-bottom: 0;
+    }
     </style>
     <div class="centered-text">
         <h1>Welcome to my heart attack risk prediction app. ❤️</h1> 
@@ -29,10 +32,6 @@ st.markdown("""
         <p></p>
     </div>
     """, unsafe_allow_html=True)
-
-import streamlit as st
-
-import streamlit as st
 
 st.markdown(
     """
@@ -46,10 +45,10 @@ st.markdown(
     During this phase, I thoroughly explored the dataset to understand distributions and identify missing data. I applied extensive <a href="https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb">preprocessing techniques</a> including feature engineering, encoding, normalization, and balancing to prepare the data for modeling.
     <br><br>
     <h6>Model Development and Optimization</h6>
-    The project involved training and evaluating seven machine learning models: Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, Gradient Boosting, and Neural Networks. I hyperparameter-tuned the best-performing models, achieving a placement of <b>46th in the Kaggle competition</b> with a moderate model accuracy of 63.776%.
+    The project involved training and evaluating seven machine learning models: Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, Gradient Boosting, and Neural Networks. I hyperparameter-tuned the best-performing models, achieving a placement of <b>46th in the Kaggle competition</b> with a moderate model accuracy: the prediction will be correct about 64% of the time.
     <br><br>
     <h6>Focus on Precision</h6>
-    This is where my project took a significant turn. I believe that <b>precision</b> is a much better metric for measuring model performance than accuracy (as used by Kaggle). Detecting high-risk cases is crucial because misclassification (i.e., labeling high-risk cases as low-risk) can potentially cost lives. Therefore, I prioritized increasing precision over accuracy. I identified <b>XGBoost</b> as the highest-performing model and optimized its parameters for the best performance.
+    This is where my project took a significant turn. <i>I believe that <b>precision</b> is a much better metric for measuring model performance than accuracy (as used by Kaggle)</i>. Detecting high-risk cases is crucial because misclassification (i.e., labeling high-risk cases as low-risk) can potentially cost lives. Therefore, I prioritized increasing precision over accuracy. I identified <b>XGBoost</b> as the highest-performing model and optimized its parameters for the best performance.
     <br>
     Furthermore, I noticed that the most accurate models (those placing in the top 5+ in the competition) failed to predict any positive cases in the 1,710 test cases, despite 35% of the training data (N=7,035) being labeled as high-risk. To address this, I enhanced my model's sensitivity by applying <b>probability estimation</b> and tuning the threshold. This resulted in a 5% improvement in detection. For detailed documentation, refer to <a href="https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb">this notebook</a>.
     <br><br>
