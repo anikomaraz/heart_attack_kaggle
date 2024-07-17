@@ -57,7 +57,7 @@ st.markdown(
         </li>
     </ol>
 
-    <h2 style="color:#228B22;">Model Deployment and GitHub Repository</h2>
+    <h2 style="color:#228B22;">Model Deployment</h2>
 
     - The project evolved through multiple versions, culminating in a deployed application hosted on <b>Google Cloud Platform</b> with a Streamlit frontend.
     - For more detailed insights, including comprehensive project details, versioning, and visualizations, go to <a href="https://fake-heart-attack.streamlit.app/Technical_summary">Technical Summary</a> on this website, or visit my <a href="https://github.com/anikomaraz/heart_attack_kaggle#">GitHub Repository</a>.
@@ -74,14 +74,13 @@ st.markdown("""
 
 
 # Define the buttons
-
 github_logo_url = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
 
 buttons = [
     {"label": "Go to <b>Prediction</b> 🎯", "url": "https://fake-heart-attack.streamlit.app/Prediction"},
     {"label": "See the <b>Technical Summary</b> 📈", "url": "https://fake-heart-attack.streamlit.app/Technical_summary"},
-    {"label": "<b>Contact Me<b/> 👋", "url": "https://fake-heart-attack.streamlit.app/Contact"},
-    {"label": f"Visit the Project's <b>GitHub Repository</> <img src='{github_logo_url}' width='20'>",
+    {"label": "<b>Contact Me</b> 👋", "url": "https://fake-heart-attack.streamlit.app/Contact"},
+    {"label": f"Visit the Project's <b>GitHub Repository</b> <img src='{github_logo_url}' width='20'>",
      "url": "https://github.com/anikomaraz/heart_attack_kaggle"}
 ]
 
