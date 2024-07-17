@@ -73,18 +73,20 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 
-# Define the buttons
+# GitHub logo URL
 github_logo_url = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
 
+# Define the button labels and URLs
 buttons = [
     {"label": "Go to Prediction 🎯", "url": "https://fake-heart-attack.streamlit.app/Prediction"},
     {"label": "See the Technical Summary 📈", "url": "https://fake-heart-attack.streamlit.app/Technical_summary"},
     {"label": "Contact Me 👋", "url": "https://fake-heart-attack.streamlit.app/Contact"},
-    {"label": f"Visit the Project's GitHub Repository <img src='{github_logo_url}' width='20'>",
-     "url": "https://github.com/anikomaraz/heart_attack_kaggle"}
+    {"label": f"Visit the Project's GitHub Repository", "url": "https://github.com/anikomaraz/heart_attack_kaggle"}
 ]
 
 # Display buttons
 for button in buttons:
-    st.write("")
-    st.button(button["label"], on_click=button["url"])
+    if button["label"] == "Visit the Project's GitHub Repository":
+        st.markdown(f"[{button['label']}]({button['url']}) <img src='{github_logo_url}' width='20'>", unsafe_allow_html=True)
+    else:
+        st.button(button["label"], on_click=button["url"])
