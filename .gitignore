@@ -1,8 +1,10 @@
-heart_risk/
+heart_attack/
 data/
 .idea/
+.devcontainer/
 __pycache__/
 .ipynb_checkpoints/
+.log
 bin/
 include/
 lib/
