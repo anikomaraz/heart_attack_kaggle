@@ -5,6 +5,8 @@ st.set_page_config(
     page_icon="💓",
 )
 
+st.sidebar.header("💓 Home")
+
 st.markdown("""
     <style>
     .centered-text {
@@ -24,12 +26,15 @@ st.markdown("""
     </style>
     <div class="centered-text">
         <h1>Welcome to my heart attack risk prediction app. ❤️</h1> 
-        <br>
-        <h5>This is a unique opportunity to fake-predict your heart attack risk. Please note that this model was trained on fake data, so don't take the prediction too seriously. Having said that it should generally point you to the right direction, so if you want to minimise your chance of a heart attack, then live a healthy life!️</h5> 
-        <p></p>
-        <p></p>
+        <br> <br> 
+       
     </div>
     """, unsafe_allow_html=True)
+
+
+disclaimer = "Please note that this model was trained on fake data, so don't take the prediction too seriously. Having said that it should generally point you to the right direction. If you want to minimise your chance of a heart attack, then live a healthy life!️"
+
+st.warning(disclaimer)
 
 st.markdown(
     """

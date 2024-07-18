@@ -6,6 +6,8 @@ st.set_page_config(
     page_icon="👋",
 )
 
+st.sidebar.header("👋 Contact")
+
 
 st.markdown(f"""
    ✉️ aniko.maraz  [at]  gmail  [dot]  com

@@ -3,11 +3,12 @@ import requests
 
 st.set_page_config(page_title="Prediction", page_icon="🎯")
 
-st.sidebar.header("Heart Attack Risk Prediction")
+st.sidebar.header("🎯 Heart Attack Risk Prediction")
 
 
 st.markdown("""
-Please enter your data or use / modify the default values to get your heart attack risk prediction.
+This is a unique opportunity to fake-predict your heart attack risk.
+Please enter your data or use / modify the default values.
 
 <br>
 <br>
@@ -158,7 +159,7 @@ if st.button('Predict'):
                     <p class="big-font">{prediction}</p>
                     """, unsafe_allow_html=True)
         else:
-            st.error('Failed to get prediction.')
+            st.error('Failed to get prediction. Please contact me!')
 
     except requests.exceptions.RequestException as e:
         st.error(f'Error: {e}')
@@ -168,6 +169,8 @@ st.markdown("""
 <br>
 <br>
 """, unsafe_allow_html=True)
+
+
 
 st.markdown('''
     <i>The estimation should be done in ~5 seconds (or quicker), please be patient.</i>
