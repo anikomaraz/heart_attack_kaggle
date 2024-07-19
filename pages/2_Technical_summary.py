@@ -10,7 +10,8 @@ st.markdown("""
 
 This project was inspired by a [Kaggle Competition](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview). 
 The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics. 
-Like most Kaggle competitions, my model was evaluated based on :blue-background[accuracy]: how well it predicts high vs. low risk of heart attack, and true vs. false cases ([preprocessing and Kaggle-optimized solution](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb)). However, while accuracy is a good general metric, I argue that in this case :blue-background[**precision**] is a better metric for model performance given the high cost of missing true positive (high risk) cases (see my [Sensible approach](https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb)). Therefore, I created my version to improve detection in production. 
+Like most Kaggle competitions, my model was evaluated based on :blue-background[accuracy]: how well it predicts high vs. low risk of heart attack, and true vs. false cases ([Version 1: preprocessing and Kaggle-optimized solution](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb)). 
+However, while accuracy is a good general metric, I argue that in this case :blue-background[**precision**] is a better metric for model performance given the high cost of missing true positive (high risk) cases (see [Version 2, the precision-focused approach](https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb)). Therefore, I created my version to improve detection in production. 
 After preprocessing and several training rounds, I settled on an _**:blue-background[XGBoost] model with :blue-background[probability estimation], resulting in correctly detecting high-risk cases :blue-background[43%] of the time.**_
 
 ### :green[Task and Data]
@@ -27,7 +28,7 @@ There are no outliers or missing data. Mean values and distributions reflect tho
 
 Given the lack of outliers and near-uniform distribution of data, I opted for the :blue-background[Min Max Scaler] for continuous variables to prepare them for gradient-based optimization algorithms and the :blue-background[One Hot Encoder] for categorical features. There was :blue-background[no multicollinearity] among features (all VIF < 4).
 
-### :green[Kaggle Model Performance]
+### :green[**Version 1:** Kaggle Model Performance]
 
 To achieve the highest accuracy, I tested seven models in the pipeline:
 """, unsafe_allow_html=True)
@@ -50,7 +51,7 @@ I [compared the train vs. test features](https://nbviewer.org/github/anikomaraz/
 Additionally, even though the competition was scored on accuracy, I questioned whether this metric is the best measure for this model's performance. 
 Therefore I decided to follow my own approach. 
 
-### :green[Precision-based Approach]
+### :green[**Version 2:** Precision-based Approach]
 
 Accuracy is a good "general" metric for model classification performance because it reflects the model's ability to correctly label both true and false cases. 
 However, in this particular case, missing a high-risk (positive) case of heart attack could be fatal. 
@@ -58,7 +59,7 @@ To mitigate this risk and ensure high-risk cases are captured as diligently as p
 Optimizing for precision allows for more sensitive detection of high-risk cases in production, potentially saving lives.
 
 
-Mathematically speaking:
+Mathematically:
 <br> <br>
 
 $$\\text{Precision} = \\frac{\\text{True Positives}}{\\text{True Positives} + \\text{False Positives}} $$
@@ -85,7 +86,7 @@ st.markdown("""
 
 The model implemented in production demonstrates high sensitivity in identifying positive cases, correctly flagging 43% of instances as high risk of heart attack. 
 However, it also shows a notable bias towards positivity, resulting in 57% of cases being incorrectly classified as high risk. 
-*This approach has led to 27 cases being flagged as high risk that would have been missed by the baseline accuracy-optimized model.*
+*This approach has led to 27 cases being flagged as high risk that would have been missed by the baseline accuracy-optimized (Version 1) model.*
 
 Despite its efficacy in sensitivity, this bias towards positivity has impacted its performance on unseen Kaggle test data due to lower recall, resulting in a slightly lower accuracy of 0.63262 compared to the 0.63776 achieved by the accuracy-optimized baseline model.
 
