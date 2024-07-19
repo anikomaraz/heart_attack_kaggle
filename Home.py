@@ -32,7 +32,9 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 
-disclaimer = "Please note that this model was trained on fake data, so don't take the prediction too seriously. Having said that it should generally point you to the right direction. If you want to minimise your chance of a heart attack, then live a healthy life!️"
+disclaimer = ("Please note that this model was trained on fake data, so don't take the prediction too seriously. "
+              "Having said that it should generally point you to the right direction. "
+              "If you want to minimise your chance of a heart attack, then live a healthy life!️")
 
 st.warning(disclaimer)
 
@@ -42,21 +44,27 @@ st.markdown(
     <br> <br>
     <h3>Quick Summary</h3>
 
-    This project was inspired by the [Heart Attack Risk Analysis](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview) competition on Kaggle, with predictions submitted to an ongoing challenge. The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics. However, :blue-background[I decided to develop a better model that focuses on identifying high-risk cases (optimizing for precision) instead of correctly identifying all cases (optimized for accuracy, as required by Kaggle).] Below is a quick summary of the app's key phases, steps, and highlights. For detailed information on preprocessing, modeling, and evaluation, refer to the [Technical Summary](https://fake-heart-attack.streamlit.app/Technical_summary).
+    **:green[The Challenge]:** This project was inspired by the [Heart Attack Risk Analysis](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview) competition on Kaggle, with predictions submitted to an ongoing challenge. 
+    The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics. 
+    After preprocessing the data, I trained and evaluated 7 machine learning models, fine-tuned the best performing ones and achieved a placement of :blue-background[46th in the Kaggle competition]. 
+    
+    **:green[Focus on Precision]:**
+    The Kaggle competition was scored on model _accuracy_ that reflects the model's ability to correctly label both true and false cases. 
+    However, in this particular case, missing a high-risk (positive) case of heart attack could be fatal. 
+    To mitigate this risk and ensure high-risk cases are captured as diligently as possible, I prioritized :blue-background[**precision** as a measure of goodness of fit]. 
+    Optimizing for precision allows for more sensitive detection of high-risk cases in production, potentially saving lives. 
+    
+    
+    **:green[Model and Evaluation]:** To further enhance the model's sensitivity, I opted for :blue-background[probability estimation] and found the best-scoring model on precision to be the :blue-background[XGBoost] model. Following fine-tuning this model achieved a precision of 0.4286. 
+    This means that if the model identifies a positive case, it is :blue-background[**correct 43% of the time**] (precision), meaning it will give a false alarm 57% of the time.
+    
+    **:green[Model Deployment]:** After several iterations, the project culminated in deployment on :blue-background[Google Cloud Platform] with a Streamlit frontend. 
 
-    **:green[Data Exploration]:** First I thoroughly explored the dataset to understand distributions and identify missing data. 
-    I applied extensive [preprocessing techniques](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb) including feature engineering, encoding, normalization, and balancing to prepare the data for modeling.
-    
-    **:green[Model Development and Optimization]:** The project involved training and evaluating seven machine learning models: Logistic Regression, XGBoost, SVM, Decision Tree, Random Forest, Gradient Boosting, and Neural Networks. I hyperparameter-tuned the best-performing models, achieving a placement of :blue-background[46th in the Kaggle competition] with a moderate model accuracy: the prediction will be correct about 64% of the time.
-    
-    **:green[Focus on Precision]:** This is where my project took a significant turn. :blue-background[I believe that <b>precision</b> is a much better metric for measuring model performance than accuracy] (as used by Kaggle). Detecting high-risk cases is crucial because misclassification (i.e., labeling high-risk cases as low-risk) can potentially cost lives. Therefore, I prioritized increasing precision over accuracy. I identified :blue-background[XGBoost] as the highest-performing model and optimized its parameters for the best performance.
-    
-    Furthermore, I noticed that the most submissions including my own (those placing in the top 5+ in the competition) failed to predict <i>any</i> positive case in the 1,753 test cases, despite 35% of the training data (N=7,010) being labeled as high-risk. To address this, I enhanced my model's sensitivity by applying :blue-background[probability estimation] and tuning its threshold. This resulted in a substantial, 5% improvement in detection. For detailed documentation, refer to <a href="https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb">this notebook</a>.
-    
-    **:green[Model Evaluation]:** If the model identifies a positive case, it is correct :blue-background[43% of the time] (precision), meaning it will give a false alarm 57% of the time.
-    
-    **:green[Model Deployment]:** After several iterations, the project culminated in deployment on :blue-background[Google Cloud Platform] with a Streamlit frontend. For comprehensive code, versioning, and visualizations, please visit the [Technical Summary](https://fake-heart-attack.streamlit.app/Technical_summary) on this website.
+      
+    For detailed information on preprocessing, modeling, evaluation and visualisations refer to the [Technical Summary](https://fake-heart-attack.streamlit.app/Technical_summary).
 
+     
+    
     <br>
     Happy faking! 😃
     """,
