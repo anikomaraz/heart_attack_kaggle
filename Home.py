@@ -32,16 +32,9 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 
-disclaimer = ("Please note that this model was trained on fake data, so don't take the prediction too seriously. "
-              "Having said that it should generally point you to the right direction. "
-              "If you want to minimise your chance of a heart attack, then live a healthy life!️")
-
-st.warning(disclaimer)
 
 st.markdown(
     """
-       
-    <br> <br>
     <h3>Quick Summary</h3>
 
     **:green[The Challenge]:** This project was inspired by the [Heart Attack Risk Analysis](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview) competition on Kaggle, with predictions submitted to an ongoing challenge. 

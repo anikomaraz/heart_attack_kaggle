@@ -174,9 +174,15 @@ st.markdown("""
 
 st.markdown('''
     <i>The estimation should be done in ~5 seconds (or quicker), please be patient.</i>
-    <br><br>
-    <sup>*</sup>Although this model is far from reflecting reality, it should generally point you to the right direction.
+    
     
 ''', unsafe_allow_html=True)
+
+
+disclaimer = ("Please note that this model was trained on fake data, so don't take the prediction too seriously. "
+              "Having said that it should generally point you to the right direction. "
+              "If you want to minimise your chance of a heart attack, then live a healthy life!️")
+
+st.warning(disclaimer)
 
 
