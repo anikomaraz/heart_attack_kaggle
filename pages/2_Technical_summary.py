@@ -117,7 +117,7 @@ It appears that based on this (fake-data-)model that there might be significant 
 This could be due to various factors like climate, lifestyle, healthcare access, or even genetic predispositions prevalent in different hemispheres.
 However, :blue-background[diet] also plays a role in heart attack risk: unhealthy diet is strongly associated with increased heart attack risk. This aligns with medical research that poor dietary habits contribute significantly to heart disease.
 
-### :green[Deployment]
+### :green[Under the Hood]
 Data submitted through the frontend is transmitted to a containerised backend hosted on the :blue-background[Google Cloud Platform]. Utilizing the trained model, the system generates a prediction (high/low risk), which is then relayed back to the frontend interface (:blue-background[Streamlit]) for display.
 """, unsafe_allow_html=True)
 
