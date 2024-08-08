@@ -6,13 +6,25 @@ st.set_page_config(page_title="Technical Summary", page_icon="📈")
 st.sidebar.header("📈 Technical Summary")
 
 st.markdown("""
-### :green[Foreword]
+    <style>
+    .centered-text {
+        text-align: center;
+    }
+    .centered-text h1 {
+        font-size: 45px;
+        font-weight: bold;
+    }
+    </style>
+    <div class="centered-text">
+        <h1>Technical Summary ️📈</h1> 
+        <br> <br> 
 
-This project was inspired by a [Kaggle Competition](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview). 
-The task was to predict heart attack risk (low/high) given 25 features of lifestyle and biometrics. 
-Like most Kaggle competitions, my model was evaluated based on :blue-background[accuracy]: how well it predicts high vs. low risk of heart attack, and true vs. false cases ([Version 1: preprocessing and Kaggle-optimized solution](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb)). 
-However, while accuracy is a good general metric, I argue that in this case :blue-background[**precision**] is a better metric for model performance given the high cost of missing true positive (high risk) cases (see [Version 2, the precision-focused approach](https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb)). Therefore, I created my version to improve detection in production. 
-After preprocessing and several training rounds, I settled on an _**:blue-background[XGBoost] model with :blue-background[probability estimation], resulting in correctly detecting high-risk cases :blue-background[43%] of the time.**_
+    </div>
+    """, unsafe_allow_html=True)
+
+
+
+st.markdown("""
 
 ### :green[Task and Data]
 
@@ -105,9 +117,16 @@ It appears that based on this (fake-data-)model that there might be significant 
 This could be due to various factors like climate, lifestyle, healthcare access, or even genetic predispositions prevalent in different hemispheres.
 However, :blue-background[diet] also plays a role in heart attack risk: unhealthy diet is strongly associated with increased heart attack risk. This aligns with medical research that poor dietary habits contribute significantly to heart disease.
 
-""")
+### :green[Deployment]
+Data submitted through the frontend is transmitted to a containerised backend hosted on the :blue-background[Google Cloud Platform]. Utilizing the trained model, the system generates a prediction (high/low risk), which is then relayed back to the frontend interface (:blue-background[Streamlit]) for display.
+""", unsafe_allow_html=True)
 
 st.markdown("""
-    <br> <br>
-    Further details: [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle)
-    """, unsafe_allow_html=True)
+<br> <br>
+**Further details: [GitHub Repository](https://github.com/anikomaraz/heart_attack_kaggle)** <br> <br>
+Useful links: <br>
+[Kaggle Competition](https://www.kaggle.com/competitions/heart-attack-risk-analysis/overview) <br> 
+[Version 1: preprocessing and Kaggle-optimized solution](https://nbviewer.org/github/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v3_clean_KaggleV1.ipynb) <br>
+[Version 2: the precision-focused approach](https://github.com/anikomaraz/heart_attack_kaggle/blob/main/notebooks/heart_attack_v5_probability_xgboost_KaggleV2.ipynb) <br>
+    
+""", unsafe_allow_html=True)
